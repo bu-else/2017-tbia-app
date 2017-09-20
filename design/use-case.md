@@ -15,15 +15,14 @@ Mobile App for Traumatic Brain Injury Assessment
           * User sets up device passcode and (optionally) biometric authentication
         * User agrees to terms of use/end-user license agreement
         * User receives confirmation email with first-time tips
-        * User signs in with passcode or biometric authentication and lands on personalized dashboard
+        * User signs in with passcode or biometric authentication and lands on personalized dashboard [4]
         * User can begin evaluation
           * User draws, answers questions to evaluate their TBI status
           * User sees progress bar
           * If physician affiliated, can leave comments for physician[1][2]
         * User finishes all questions
         * User is informed their summary will be available upon evaluator's review
-        * User can see past results 
-    * Alternative Flow
+    * Alternative Flows
         * [1] User switches applications, then returns in under 5 minutes
           * User continues evaluation 
         * [2] User switches applications and does not return for at least 5 minutes, or user closes application
@@ -32,3 +31,5 @@ Mobile App for Traumatic Brain Injury Assessment
         * [3] User cannot log in (e.g., forgot passcode, biometric failure)
           * User requests a password reset link via email
           * User follows link in a browser and answers security questions to enable a password reset
+        * [4] User can see past results 
+          * User returns to dashboard 
