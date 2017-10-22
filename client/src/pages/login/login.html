@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding scroll="false">
+  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+    <ion-item>
+      <ion-input placeholder="Email" name="email" type="email" required [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password" name="password" type="password" required [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <div padding>
+      <button padding ion-button full type="submit" [disabled]="!loginForm.form.valid">Sign In</button>
+    </div>
+  </form>
+</ion-content>
