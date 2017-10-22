@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { HistoryPage } from '../pages/history/history';
 import { ProfilePage } from '../pages/profile/profile';
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -19,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HistoryPage,
     ProfilePage,
     LoginPage,
+    SignupPage,
     TabsPage
   ],
   imports: [
@@ -32,6 +34,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HistoryPage,
     ProfilePage,
     LoginPage,
+    SignupPage,
     TabsPage
   ],
   providers: [
