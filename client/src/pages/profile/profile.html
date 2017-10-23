@@ -6,12 +6,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <img src="https://ionicframework.com/img/ionic-meta.jpg" />
+  <ion-icon name="create-outline"></ion-icon>
+
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+    <ion-list-header>
+      General
+    </ion-list-header>
+    <ion-item>Full Name</ion-item>
+    <ion-item>Age</ion-item>
+    <ion-item>Gender</ion-item>
   </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      History of Injury
+    </ion-list-header>
+    <ion-item>Date</ion-item>
+    <ion-item>Medical Problems</ion-item>
+  </ion-list>
+
+  <div padding>
+    <button padding ion-button full>Edit</button>
+  </div>
 </ion-content>
