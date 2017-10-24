@@ -1,13 +1,12 @@
 page-home {
     ion-slide {
-        padding-top: 100px;
+        top: 20%;
     }
 
-    .toolbar-background {
-        background: #fff;
-        border-color: transparent;
+    button {
+        width: 30%;
     }
-    
+
     .slide-zoom {
         height: 100%;
     }
