@@ -1,23 +1,20 @@
 import { Component } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
-import { HistoryPage } from '../history/history';
-import { ProfilePage } from '../profile/profile';
-import { LoginPage} from '../login/login';
-import { SignupPage } from '../signup/signup';
-
+@IonicPage()
 @Component({
+  selector: 'page-tabs',
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = HistoryPage;
-  tab3Root = ProfilePage;
-  tab4Root = LoginPage;
-  tab5Root = SignupPage;
+  homeRoot = 'HomePage'
+  historyRoot = 'HistoryPage'
+  profileRoot = 'ProfilePage'
+  loginRoot = 'LoginPage'
+  signupRoot = 'SignupPage'
 
-  constructor() {
 
-  }
+  constructor(public navCtrl: NavController) {}
+
 }
