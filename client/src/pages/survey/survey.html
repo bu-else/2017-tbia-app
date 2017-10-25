@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Survey</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager #slides>
+    <ion-slide *ngFor="let s of survey; let i = index;">
+      <h1 [innerHTML]="s.question"></h1>
+      <ion-list no-lines radio-group>
+        <ion-item *ngFor="let answer of s.answers; let i = index;">
+          <ion-label>{{answer.answer_id}}. {{answer.answer}}</ion-label>
+          <ion-radio></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-buttons>
+        <button ion-button outline class="submit" (click)="submit()">Next</button>
+      </ion-buttons>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
