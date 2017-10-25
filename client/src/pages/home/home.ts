@@ -30,6 +30,12 @@ export class HomePage {
     }
   ];
 
+  startPhase(title) {
+    if (title === "Symptom Survey") {
+      this.navCtrl.push('SurveyPage');
+    }
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }

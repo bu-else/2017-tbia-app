@@ -11,7 +11,7 @@
       <p [innerHTML]="slide.description"></p>
       <ion-buttons>
         <button ion-button outline>Resume</button>
-        <button ion-button outline>Start</button>
+        <button ion-button outline (click)="startPhase(slide.title)">Start</button>
       </ion-buttons>
     </ion-slide>
   </ion-slides>
