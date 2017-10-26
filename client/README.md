@@ -24,3 +24,17 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+## Ionic Unit Testing
+#### Unit Tests
+```bash
+$ npm run test
+```
+
+#### End-to-end Tests
+To serve the app, run
+```bash
+$ ionic serve
+$ npm run e2e
+```
+
+Reference: [Ionic Unit Testing Example](https://github.com/ionic-team/ionic-unit-testing-example)
