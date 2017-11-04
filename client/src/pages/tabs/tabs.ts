@@ -9,7 +9,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class TabsPage {
 
   homeRoot = 'HomePage'
-  historyRoot = 'HistoryPage'
+  // historyRoot = 'HistoryPage'
   profileRoot = 'ProfilePage'
   loginRoot = 'LoginPage'
   signupRoot = 'SignupPage'
