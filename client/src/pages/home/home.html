@@ -5,14 +5,4 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides pager>
-    <ion-slide *ngFor="let slide of slides">
-      <h1 class="slide-title" [innerHTML]="slide.title"></h1>
-      <p [innerHTML]="slide.description"></p>
-      <ion-buttons>
-        <button ion-button outline>Resume</button>
-        <button ion-button outline (click)="startPhase(slide.title)">Start</button>
-      </ion-buttons>
-    </ion-slide>
-  </ion-slides>
 </ion-content>
