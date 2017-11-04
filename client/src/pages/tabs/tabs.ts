@@ -9,6 +9,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class TabsPage {
   homeRoot = "HomePage";
   surveyRoot = "SurveyMasterPage";
+  assessmentRoot = "AssessmentMasterPage";
 
   constructor(public navCtrl: NavController) {}
 
