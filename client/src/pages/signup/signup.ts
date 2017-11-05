@@ -20,20 +20,21 @@ export class SignupPage {
   }
 
   doSignup() {
+    this.navCtrl.push('TabsPage');
     // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp) => {
-      this.navCtrl.push('TabsPage');
-    }, (err) => {
+    // this.user.signup(this.account).subscribe((resp) => {
+    //   this.navCtrl.push('TabsPage');
+    // }, (err) => {
 
-      this.navCtrl.push('TabsPage');
+    //   this.navCtrl.push('TabsPage');
 
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
+    //   // Unable to sign up
+    //   let toast = this.toastCtrl.create({
+    //     message: this.signupErrorString,
+    //     duration: 3000,
+    //     position: 'top'
+    //   });
+    //   toast.present();
+    // });
   }
 }
