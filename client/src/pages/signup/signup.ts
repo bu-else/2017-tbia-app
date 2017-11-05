@@ -13,8 +13,8 @@ export class SignupPage {
     email: 'test@example.com',
     password: 'test'
   };
-  
-  private signupErrorString: string;
+
+  private signupErrorString = "Unable to create account. Please check your account information and try again.";
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController) {
   }
@@ -22,10 +22,10 @@ export class SignupPage {
   doSignup() {
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe((resp) => {
-      this.navCtrl.push("TabsPage");
+      this.navCtrl.push('TabsPage');
     }, (err) => {
 
-      this.navCtrl.push("TabsPage");
+      this.navCtrl.push('TabsPage');
 
       // Unable to sign up
       let toast = this.toastCtrl.create({
