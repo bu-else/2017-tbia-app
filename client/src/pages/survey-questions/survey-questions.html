@@ -8,12 +8,27 @@
   <ion-slides pager #slides>
     <ion-slide *ngFor="let s of survey; let i = index;">
       <h1 [innerHTML]="s.question"></h1>
-      <ion-list no-lines radio-group>
-        <ion-item *ngFor="let answer of s.answers; let i = index;">
-          <ion-label>{{answer.answer_id}}. {{answer.answer}}</ion-label>
-          <ion-radio></ion-radio>
-        </ion-item>
-      </ion-list>
+      
+      <div *ngIf="s.single_choice || s.multiple_choices">
+        <ion-list no-lines radio-group>
+          <ion-item *ngFor="let answer of s.answers; let i = index;">
+            <ion-label>{{answer.answer_id}}. {{answer.answer}}</ion-label>
+            <ion-radio></ion-radio>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="s.range">
+        <ion-list>
+          <ion-item>
+            <ion-range min="{{s.answers.min}}" max="{{s.answers.max}}" step="{{s.answers.step}}" snaps="true" pin="true" [(ngModel)]="value">
+              <ion-label range-left>{{s.answers.min}}</ion-label>
+              <ion-label range-right>{{s.answers.max}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </ion-list>
+      </div>
+
       <ion-buttons>
         <button ion-button outline block (click)="submit()">Next</button>
       </ion-buttons>
