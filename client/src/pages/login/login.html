@@ -1,21 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Login
-    </ion-title>
+    <ion-title>Sign In</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding scroll="false">
-  <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-    <ion-item>
-      <ion-input placeholder="Email" name="email" type="email" required [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Password" name="password" type="password" required [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <div padding>
-      <button padding ion-button full type="submit" [disabled]="!loginForm.form.valid">Sign In</button>
-    </div>
+<ion-content>
+  <form (submit)="doLogin()">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>Sign In</button>
+      </div>
+    </ion-list>
   </form>
 </ion-content>

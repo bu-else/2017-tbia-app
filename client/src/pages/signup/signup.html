@@ -1,34 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Sign Up
-    </ion-title>
+    <ion-title>Sign Up</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <form #signupForm="ngForm" (ngSubmit)="signup()" autocomplete="off">
-    <ion-item>
-      <ion-input placeholder="Name" name="name" type="text" required [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Email" name="email" type="email" required [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Password" name="password" type="password" required [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Age" name="age" type="number" required [(ngModel)]="age"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Gender</ion-label>
-      <ion-select [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">
-        <ion-option value="f">Female</ion-option>
-        <ion-option value="m">Male</ion-option>
-      </ion-select>
-    </ion-item>
-    <div padding>
-      <button padding ion-button full type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
-    </div>
+<ion-content>
+  <form (submit)="doSignup()">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>Sign Up</button>
+      </div>
+
+    </ion-list>
   </form>
 </ion-content>

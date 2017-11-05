@@ -3,16 +3,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-history',
-  templateUrl: 'history.html',
+  selector: 'page-profile-master',
+  templateUrl: 'profile-master.html',
 })
-export class HistoryPage {
+export class ProfileMasterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryPage');
+    console.log('ionViewDidLoad ProfileMasterPage');
   }
 
 }
