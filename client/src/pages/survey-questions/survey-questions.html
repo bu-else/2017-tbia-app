@@ -7,19 +7,19 @@
 <ion-content padding>
   <ion-slides pager #slides>
     <ion-slide *ngFor="let s of survey; let i = index;">
-      <h1 [innerHTML]="s.question"></h1>
+      <h3 [innerHTML]="s.question"></h3>
       
       <div *ngIf="s.single_choice || s.multiple_choices">
-        <ion-list no-lines radio-group>
-          <ion-item *ngFor="let answer of s.answers; let i = index;">
-            <ion-label>{{answer.answer_id}}. {{answer.answer}}</ion-label>
-            <ion-radio></ion-radio>
+        <ion-list no-lines>
+          <ion-item *ngFor="let a of s.answers; let i = index;">
+            <ion-label>{{a.answer}}</ion-label>
+            <ion-checkbox></ion-checkbox>
           </ion-item>
         </ion-list>
       </div>
 
       <div *ngIf="s.range">
-        <ion-list>
+        <ion-list no-lines>
           <ion-item>
             <ion-range min="{{s.answers.min}}" max="{{s.answers.max}}" step="{{s.answers.step}}" snaps="true" pin="true" [(ngModel)]="value">
               <ion-label range-left>{{s.answers.min}}</ion-label>
