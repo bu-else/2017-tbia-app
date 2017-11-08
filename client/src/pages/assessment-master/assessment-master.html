@@ -8,4 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-buttons>
+    <button ion-button block *ngFor="let a of assessments" (click)="startAssessment(a)">
+      {{a.title}}
+    </button>
+  </ion-buttons>
 </ion-content>
