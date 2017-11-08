@@ -11,7 +11,7 @@ export class SurveyQuestionsPage {
   private survey;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.http.get('../assets/json/survey.json').subscribe(res => {
+    this.http.get('../assets/data/survey/survey.json').subscribe(res => {
       this.survey = res;
     })
   }
