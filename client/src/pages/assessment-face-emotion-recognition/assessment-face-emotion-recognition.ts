@@ -35,7 +35,11 @@ export class AssessmentFaceEmotionRecognitionPage {
       {
         "answer_id": 5,
         "answer_img": "assets/data/face-emotion-recognition/confused.jpg",
+<<<<<<< HEAD
         "answer": "Confused"
+=======
+        "ansewr": "Confused"
+>>>>>>> Create an assessment page for face emotion recognition (#18) (still need
       }
     ]
   };
@@ -58,6 +62,10 @@ export class AssessmentFaceEmotionRecognitionPage {
         "correct_answer": template.answers[randint]
       });
     }
+<<<<<<< HEAD
+=======
+    console.log(questions);
+>>>>>>> Create an assessment page for face emotion recognition (#18) (still need
     return questions;
   }
 
