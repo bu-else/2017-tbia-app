@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Face Emotion Recognition</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager #slides>
+    <ion-slide *ngFor="let s of assessment; let i = index;">
+      <img class="question-img" src="{{s.question_img}}"/>
+      <h3 [innerHTML]="s.question"></h3>
+      <ion-list no-lines>
+        <ion-item *ngFor="let a of s.answers; let i = index;">
+          <ion-label>{{a.answer}}</ion-label>
+          <ion-checkbox></ion-checkbox>
+        </ion-item>
+      </ion-list>
+      
+      <ion-buttons>
+        <button ion-button outline block (click)="submit()">Next</button>
+      </ion-buttons>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
