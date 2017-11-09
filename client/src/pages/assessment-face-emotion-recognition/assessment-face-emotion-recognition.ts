@@ -35,7 +35,7 @@ export class AssessmentFaceEmotionRecognitionPage {
       {
         "answer_id": 5,
         "answer_img": "assets/data/face-emotion-recognition/confused.jpg",
-        "ansewr": "Confused"
+        "answer": "Confused"
       }
     ]
   };
@@ -58,7 +58,6 @@ export class AssessmentFaceEmotionRecognitionPage {
         "correct_answer": template.answers[randint]
       });
     }
-    console.log(questions);
     return questions;
   }
 
