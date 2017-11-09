@@ -1,0 +1,22 @@
+branches:
+  only:
+  - master
+  - Develop
+
+language: node_js
+node_js:
+  - "8"
+
+env:
+  - TEST_DIR=client
+
+cache:
+  directories:
+    - "node_modules"
+
+script:
+  cd $TEST_DIR
+  npm install
+
+notifications:
+   email: false
