@@ -1,6 +1,6 @@
 import { Page } from './app.po';
 
-describe('App', () => {
+describe('Welcome Page', () => {
   let page: Page;
 
   beforeEach(() => {
@@ -12,9 +12,9 @@ describe('App', () => {
       page.navigateTo('/');
     });
 
-    it('should be the login page', () => {
+    it('should be Ionic App', () => {
       page.getTitle().then(title => {
-        expect(title).toEqual('Login');
+        expect(title).toEqual('Ionic App');
       });
     });
   })
