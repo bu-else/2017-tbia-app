@@ -15,8 +15,11 @@ cache:
     - "node_modules"
 
 script:
-  cd $TEST_DIR
-  npm install
+  - cd $TEST_DIR
+  - npm install
+
+  # Unit Tests
+  - npm run test
 
 notifications:
    email: false
