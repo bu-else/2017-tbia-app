@@ -24,7 +24,7 @@ script:
   - npm install
 
   # Unit Tests
-  - npm run test
+  - npm run test -- --single-run
 
 notifications:
    email: false
