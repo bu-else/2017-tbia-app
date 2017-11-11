@@ -25,6 +25,9 @@ script:
 
   # Unit Tests
   - npm run test -- --single-run
+  # End-to-end Test
+  - ionic serve
+  - npm run e2e
 
 notifications:
    email: false
