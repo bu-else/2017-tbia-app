@@ -5,5 +5,20 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <ion-slides pager #slides>
+    <ion-slide *ngFor="let q of assessment; let i = index;">
+      <div *ngIf="q.message">
+        <p [innerHTML]="q.text"></p>
+        <button ion-button outline block (click)="submit()">Next</button>
+      </div>
+
+      <div *ngIf="!q.message">
+        <h4 [innerHTML]="q.question"></h4>
+
+        <ion-buttons *ngFor="let a of q.answers; let i = index;">
+          <button ion-button round block color="{{a.answer_color}}" (click)="submit()"></button>
+        </ion-buttons>
+      </div>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
