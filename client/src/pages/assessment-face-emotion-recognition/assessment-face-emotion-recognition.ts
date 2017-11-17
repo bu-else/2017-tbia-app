@@ -49,7 +49,6 @@ export class AssessmentFaceEmotionRecognitionPage {
 
     for (var i = 1; i <= count; i++) {
       let randint = Math.floor(Math.random() * 5);
-      console.log(template.answers);
       questions.push({
         "question_id": i,
         "question": template.question,

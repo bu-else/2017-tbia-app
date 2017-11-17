@@ -4,11 +4,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding scroll="false">
   <ion-slides pager #slides>
     <ion-slide *ngFor="let s of assessment; let i = index;">
-      <img class="question-img" src="{{s.question_img}}"/>
-      <h3 [innerHTML]="s.question"></h3>
+      <ion-card class="square">
+        <img src="{{s.question_img}}"/>
+      </ion-card>
+
+      <h4 [innerHTML]="s.question"></h4>
       <ion-list no-lines>
         <ion-item *ngFor="let a of s.answers; let i = index;">
           <ion-label>{{a.answer}}</ion-label>
