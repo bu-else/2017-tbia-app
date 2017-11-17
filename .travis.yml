@@ -16,7 +16,6 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-      - screen
 
 cache:
   directories:
@@ -30,11 +29,7 @@ before_install:
 script:
   - cd $TEST_DIR
   - npm install
-
-  # Unit Tests
-  - npm run test -- --single-run
-  # End-to-end Test
-  # - npm run e2e
+  - npm run test-ci
 
 notifications:
    email: false
