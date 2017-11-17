@@ -16,7 +16,6 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-      - screen
 
 cache:
   directories:
@@ -32,9 +31,9 @@ script:
   - npm install
 
   # Unit Tests
-  - npm run test -- --single-run
+  - npm run test-ci
   # End-to-end Test
-  # - npm run e2e
+  - npm run e2e
 
 notifications:
    email: false
