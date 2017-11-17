@@ -29,11 +29,7 @@ before_install:
 script:
   - cd $TEST_DIR
   - npm install
-
-  # Unit Tests
   - npm run test-ci
-  # End-to-end Test
-  - npm run e2e
 
 notifications:
    email: false
