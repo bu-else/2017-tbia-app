@@ -5,30 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-list-header>
-      General
-    </ion-list-header>
-    <ion-item>
-      Full Name
-      <ion-note item-end>First M. Last</ion-note>
+  <ion-list *ngFor="let p of profile">
+    <ion-list-header>{{p.header}}</ion-list-header>
+    <ion-item *ngFor="let i of p.items">
+      {{i.title}}
+      <ion-note item-end>{{i.value}}</ion-note>
     </ion-item>
-    <ion-item>
-      Age
-      <ion-note item-end>21</ion-note>
-    </ion-item>
-    <ion-item>
-      Gender
-      <ion-note item-end>Female</ion-note>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header>
-      History of Injury
-    </ion-list-header>
-    <ion-item>Date</ion-item>
-    <ion-item>Medical Problems</ion-item>
   </ion-list>
 
   <div padding>
