@@ -6,16 +6,16 @@
 
 <ion-content padding scroll="false">
   <ion-slides pager #slides>
-    <ion-slide *ngFor="let q of assessment; let i = index;">
+    <ion-slide *ngFor="let q of assessment">
       <ion-card class="square">
         <img src="{{q.question_img}}"/>
       </ion-card>
 
       <h4 [innerHTML]="q.question"></h4>
-      <ion-list no-lines>
-        <ion-item *ngFor="let a of q.answers; let i = index;">
+      <ion-list no-lines radio-group [(ngModel)]="autoManufacturers">
+        <ion-item *ngFor="let a of q.answers">
           <ion-label>{{a.answer}}</ion-label>
-          <ion-checkbox></ion-checkbox>
+          <ion-radio></ion-radio>
         </ion-item>
       </ion-list>
       
