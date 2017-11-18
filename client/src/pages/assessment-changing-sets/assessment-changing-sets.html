@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Changing Sets</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager #slides>
+    <ion-slide *ngFor="let q of assessment; let i = index;">
+      <div *ngIf="q.message">
+        <h2 [innerHTML]="q.text"></h2>
+        <div class="button-container">
+          <button ion-button col-5 color="danger" class="button-height">{{q.red}}</button>
+          <button ion-button col-5 color="primary" class="button-height">{{q.blue}}</button>
+        </div>
+        <button ion-button outline block (click)="submit()">Next</button>
+      </div>
+
+      <div *ngIf="!q.message">
+        <h2 [innerHTML]="q.question"></h2>
+        <div class="button-container">
+          <button *ngFor="let a of q.answers; let i = index;"
+                  ion-button col-5 color="{{a.answer_color}}" class="button-height" (click)="submit()">
+          </button>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
