@@ -6,8 +6,8 @@
 
 <ion-content padding>
   <ion-slides pager #slides>
-    <ion-slide *ngFor="let s of survey; let i = index;">
-      <h3 [innerHTML]="s.question"></h3>
+    <ion-slide *ngFor="let s of survey">
+      <h3>{{s.question_id}}. {{s.question}}</h3>
 
       <div *ngIf="s.single_choice">
         <ion-list no-lines radio-group [(ngModel)]="autoManufacturers">
