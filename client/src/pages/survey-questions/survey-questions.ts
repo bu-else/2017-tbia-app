@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class SurveyQuestionsPage {
   private survey;
+  private index = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.http.get('../assets/data/survey/survey.json').subscribe(res => {
@@ -16,13 +17,26 @@ export class SurveyQuestionsPage {
     })
   }
 
+  select(index, answer) {
+    console.log(answer);
+  }
+
   submit() {
+    if (this.index < this.survey.length) {
+      this.nextSlide(); 
+      this.index++;
+    } else {
+      // route to assessment
+    }
+  }
+
+  @ViewChild('slides') slides;
+  nextSlide() {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
     this.slides.lockSwipes(true);
   }
-
-  @ViewChild('slides') slides;
+  
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
     console.log('ionViewDidLoad SurveyQuestionsPage');
