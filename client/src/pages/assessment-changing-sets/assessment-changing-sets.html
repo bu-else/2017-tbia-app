@@ -8,16 +8,21 @@
   <ion-slides pager #slides>
     <ion-slide *ngFor="let q of assessment; let i = index;">
       <div *ngIf="q.message">
-        <p [innerHTML]="q.text"></p>
+        <h2 [innerHTML]="q.text"></h2>
+        <div class="button-container">
+          <button ion-button col-5 color="danger" class="button-height">{{q.red}}</button>
+          <button ion-button col-5 color="primary" class="button-height">{{q.blue}}</button>
+        </div>
         <button ion-button outline block (click)="submit()">Next</button>
       </div>
 
       <div *ngIf="!q.message">
-        <h4 [innerHTML]="q.question"></h4>
-
-        <ion-buttons *ngFor="let a of q.answers; let i = index;">
-          <button ion-button round block color="{{a.answer_color}}" (click)="submit()"></button>
-        </ion-buttons>
+        <h2 [innerHTML]="q.question"></h2>
+        <div class="button-container">
+          <button *ngFor="let a of q.answers; let i = index;"
+                  ion-button col-5 color="{{a.answer_color}}" class="button-height" (click)="submit()">
+          </button>
+        </div>
       </div>
     </ion-slide>
   </ion-slides>

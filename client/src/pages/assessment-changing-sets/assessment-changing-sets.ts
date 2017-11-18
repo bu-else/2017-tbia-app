@@ -51,7 +51,7 @@ export class AssessmentChangingSetsPage {
   generateQuestions(pattern, new_pattern, count) {
     let questions = [];
 
-    questions.push({"message": true, "text": "Red = 1, Blue = 2"});
+    questions.push({"message": true, "text": "Red = 1, Blue = 2", "red": 1, "blue": 2});
     for (var i = 1; i <= count; i++) {
       let randq = Math.floor(Math.random() * 2) + 1;
       let randa = Math.floor(Math.random() * 2);
@@ -63,7 +63,7 @@ export class AssessmentChangingSetsPage {
       });
     }
 
-    questions.push({"message": true, "text": "Blue = 1, Red = 2"});
+    questions.push({"message": true, "text": "Red = 2, Blue = 1", "red": 2, "blue": 1});
     for (var i = 1; i <= count; i++) {
       let randq = Math.floor(Math.random() * 2) + 1;
       let randa = Math.floor(Math.random() * 2);
