@@ -1,0 +1,30 @@
+// Defining the JSON Schema for the results of the initial survey of the user
+// Notes:
+// - 
+
+
+{
+    "title": "Initial Survey Results",
+    "description": "Standard format for reporting survey results",
+    "type": "object",
+    "properties": {
+        "userID": {
+            "description": "The unique id for the user",
+            "type": "integer"
+        },
+        "sessionID": {
+            "description": "The unique id for the session",
+            "type": "integer"
+        },
+        "deviceID": {
+            "description": "The unique id for the device",
+            "type": "integer"
+        },
+
+        "required": ["userID", "sessionID", "deviceID"]
+
+    }
+
+    // Footnotes
+    // 1
+    //
