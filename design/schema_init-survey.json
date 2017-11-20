@@ -24,7 +24,3 @@
         "required": ["userID", "sessionID", "deviceID"]
 
     }
-
-    // Footnotes
-    // 1
-    //
