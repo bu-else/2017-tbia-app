@@ -6,4 +6,8 @@ page-assessment-changing-sets {
     .button-height {
         height: 30vh;
     }
+    
+    .button-container button[disabled] {
+        opacity: 1 !important;
+    } 
 }
