@@ -24,12 +24,10 @@ export class SurveyQuestionsPage {
   }
 
   disableButton() {
-    if (this.currentQuestion().single_choice) {
+    if (this.currentQuestion().single_choice || this.currentQuestion().range) {
       return this.userSelection == null;
     } else if (this.currentQuestion().multiple_choices) {
       return this.userSelectionCount == 0;
-    } else {
-      return true;
     }
   }
 
@@ -37,13 +35,16 @@ export class SurveyQuestionsPage {
     this.userSelection = value;
   }
 
-  updateSelection(value) {
+  updateSelectionCount(value) {
     if (value.checked) {
       this.userSelectionCount += 1;
     } else {
       this.userSelectionCount -= 1;
     }
-    console.log(this.userSelectionCount);
+  }
+
+  updateRange(value) {
+    this.userSelection = value.value;
   }
 
   submit() {
