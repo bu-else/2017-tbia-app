@@ -10,10 +10,10 @@
       <h3>{{s.question_id}}. {{s.question}}</h3>
 
       <div *ngIf="s.single_choice">
-        <ion-list no-lines radio-group [(ngModel)]="autoManufacturers">
+        <ion-list no-lines radio-group (ionChange)="select($event)">
           <ion-item *ngFor="let a of s.answers">
             <ion-label>{{a.answer}}</ion-label>
-            <ion-radio></ion-radio>
+            <ion-radio value="{{a.answer}}"></ion-radio>
           </ion-item>
         </ion-list>
       </div>
@@ -22,7 +22,7 @@
         <ion-list no-lines>
           <ion-item *ngFor="let a of s.answers">
             <ion-label>{{a.answer}}</ion-label>
-            <ion-checkbox></ion-checkbox>
+            <ion-checkbox (ionChange)="updateSelectionCount($event)"></ion-checkbox>
           </ion-item>
         </ion-list>
       </div>
@@ -30,7 +30,7 @@
       <div *ngIf="s.range">
         <ion-list no-lines>
           <ion-item>
-            <ion-range min="{{s.answers.min}}" max="{{s.answers.max}}" step="{{s.answers.step}}" snaps="true" pin="true" [(ngModel)]="value">
+            <ion-range min="{{s.answers.min}}" max="{{s.answers.max}}" step="{{s.answers.step}}" snaps="true" pin="true" (ionChange)="updateRange($event)">
               <ion-label range-left>{{s.answers.min}}</ion-label>
               <ion-label range-right>{{s.answers.max}}</ion-label>
             </ion-range>
@@ -38,9 +38,7 @@
         </ion-list>
       </div>
 
-      <ion-buttons>
-        <button ion-button outline block (click)="submit()">Next</button>
-      </ion-buttons>
+      <button ion-button outline block (click)="submit()" [disabled]="disableButton()">Next</button>
     </ion-slide>
   </ion-slides>
 </ion-content>

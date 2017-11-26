@@ -8,7 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AssessmentFaceEmotionRecognitionPage {
   private assessment;
-  private count = 5;
+  private userSelection;
+  private questionCount = 5;
+
   private template = {
     "question": "What emotion is featured here?",
     "answers": [
@@ -41,7 +43,7 @@ export class AssessmentFaceEmotionRecognitionPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.assessment = this.generateQuestions(this.template, this.count);
+    this.assessment = this.generateQuestions(this.template, this.questionCount);
   }
 
   generateQuestions(template, count) {
@@ -60,10 +62,23 @@ export class AssessmentFaceEmotionRecognitionPage {
     return questions;
   }
 
+  disableButton() {
+    return this.userSelection == null;
+  }
+
+  select(value) {
+    this.userSelection = value;
+  }
+
   submit() {
     this.slides.lockSwipes(false);
     this.slides.slideNext();
     this.slides.lockSwipes(true);
+    this.cleanup();
+  }
+
+  cleanup() {
+    this.userSelection = null;
   }
 
   @ViewChild('slides') slides;

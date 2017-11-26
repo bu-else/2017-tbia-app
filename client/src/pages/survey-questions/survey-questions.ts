@@ -10,6 +10,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 export class SurveyQuestionsPage {
   private survey;
   private index = 0;
+  private userSelection;
+  private userSelectionCount = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.http.get('../assets/data/survey/survey.json').subscribe(res => {
@@ -17,19 +19,49 @@ export class SurveyQuestionsPage {
     })
   }
 
-  select(index, answer) {
-    console.log(answer);
+  currentQuestion() {
+    return this.survey[this.index];
+  }
+
+  disableButton() {
+    if (this.currentQuestion().single_choice || this.currentQuestion().range) {
+      return this.userSelection == null;
+    } else if (this.currentQuestion().multiple_choices) {
+      return this.userSelectionCount == 0;
+    }
+  }
+
+  select(value) {
+    this.userSelection = value;
+  }
+
+  updateSelectionCount(value) {
+    if (value.checked) {
+      this.userSelectionCount += 1;
+    } else {
+      this.userSelectionCount -= 1;
+    }
+  }
+
+  updateRange(value) {
+    this.userSelection = value.value;
   }
 
   submit() {
     if (this.index < this.survey.length) {
       this.nextSlide(); 
       this.index++;
+      this.cleanup();
     } else {
       // route to assessment
     }
   }
 
+  cleanup() {
+    this.userSelection = null;
+    this.userSelectionCount = 0;
+  }
+  
   @ViewChild('slides') slides;
   nextSlide() {
     this.slides.lockSwipes(false);
