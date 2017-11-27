@@ -8,7 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AssessmentChangingSetsPage {
   private assessment;
-  private count = 5;
+  private assessmentStartTime;
+  private questionStartTime;
+  private questionCount = 5;
+
   private pattern = {
     "question": "Choose ",
     "answers": [
@@ -45,7 +48,10 @@ export class AssessmentChangingSetsPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.assessment = this.generateQuestions(this.pattern, this.new_pattern, this.count);
+    this.assessment = this.generateQuestions(this.pattern, this.new_pattern, this.questionCount);
+    this.assessmentStartTime = new Date();
+    this.questionStartTime = this.assessmentStartTime;
+    console.log(this.assessmentStartTime.toString());
   }
 
   generateQuestions(pattern, new_pattern, count) {
@@ -78,9 +84,15 @@ export class AssessmentChangingSetsPage {
   }
 
   submit() {
+    let moment = require('moment');
+    let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
+    let start = moment(this.assessmentStartTime, "YYYYMMDD HH:mm:ss");
+    let timeElapsed = end.diff(start, 'seconds');
+
     this.slides.lockSwipes(false);
     this.slides.slideNext();
     this.slides.lockSwipes(true);
+    this.questionStartTime = new Date(); 
   }
 
   @ViewChild('slides') slides;
