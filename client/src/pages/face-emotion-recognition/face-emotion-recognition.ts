@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-assessment-face-emotion-recognition',
-  templateUrl: 'assessment-face-emotion-recognition.html',
+  selector: 'page-face-emotion-recognition',
+  templateUrl: 'face-emotion-recognition.html',
 })
-export class AssessmentFaceEmotionRecognitionPage {
+export class FaceEmotionRecognitionPage {
   private assessment;
   private userSelection;
   private questionCount = 5;
@@ -84,7 +84,7 @@ export class AssessmentFaceEmotionRecognitionPage {
   @ViewChild('slides') slides;
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
-    console.log('ionViewDidLoad AssessmentFaceEmotionRecognitionPage');
+    console.log('ionViewDidLoad FaceEmotionRecognitionPage');
   }
 
 }

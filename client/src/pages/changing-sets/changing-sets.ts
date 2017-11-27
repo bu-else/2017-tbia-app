@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-assessment-changing-sets',
-  templateUrl: 'assessment-changing-sets.html',
+  selector: 'page-changing-sets',
+  templateUrl: 'changing-sets.html',
 })
-export class AssessmentChangingSetsPage {
+export class ChangingSetsPage {
   private assessment;
   private assessmentStartTime;
   private questionStartTime;
@@ -98,7 +98,7 @@ export class AssessmentChangingSetsPage {
   @ViewChild('slides') slides;
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
-    console.log('ionViewDidLoad AssessmentChangingSetsPage');
+    console.log('ionViewDidLoad ChangingSetsPage');
   }
 
 }
