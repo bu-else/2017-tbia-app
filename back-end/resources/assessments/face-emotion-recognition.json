@@ -1,0 +1,33 @@
+{
+    "title": "Face Emotion Recognition",
+    "template": {
+        "question": "What emotion is featured here?",
+        "answers": [
+            {
+                "answer_id": 1,
+                "answer_img": "assets/data/face-emotion-recognition/happy.jpg",
+                "answer": "Happy"
+            },
+            {
+                "answer_id": 2,
+                "answer_img": "assets/data/face-emotion-recognition/sad.jpg",
+                "answer": "Sad"
+            },
+            {
+                "answer_id": 3,
+                "answer_img": "assets/data/face-emotion-recognition/thoughtful.jpg",
+                "answer": "Thoughtful"
+            },
+            {
+                "answer_id": 4,
+                "answer_img": "assets/data/face-emotion-recognition/angry.jpg",
+                "answer": "Angry"
+            },
+            {
+                "answer_id": 5,
+                "answer_img": "assets/data/face-emotion-recognition/confused.jpg",
+                "answer": "Confused"
+            }
+        ]
+    }
+}
