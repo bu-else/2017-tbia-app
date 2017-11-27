@@ -12,6 +12,7 @@ export class AssessmentMasterPage {
   }
 
   private assessments: any[] = [
+    { title: 'Survey', component: 'SurveyPage' },
     { title: 'Face Emotion Recognition', component: 'FaceEmotionRecognitionPage' },
     { title: 'Changing Sets', component: 'ChangingSetsPage' }
   ];
