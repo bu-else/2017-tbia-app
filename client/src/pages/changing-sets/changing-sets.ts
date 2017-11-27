@@ -52,7 +52,6 @@ export class ChangingSetsPage {
     this.assessment = this.generateQuestions(this.pattern, this.new_pattern, this.questionCount);
     this.assessmentStartTime = new Date();
     this.questionStartTime = this.assessmentStartTime;
-    console.log(this.assessmentStartTime.toString());
   }
 
   generateQuestions(pattern, new_pattern, count) {
