@@ -23,7 +23,7 @@ export class SurveyPage {
     return this.survey[this.index];
   }
 
-  disableButton() {
+  disableNextButton() {
     if (this.currentQuestion().single_choice || this.currentQuestion().range) {
       return this.userSelection == null;
     } else if (this.currentQuestion().multiple_choices) {

@@ -62,7 +62,7 @@ export class FaceEmotionRecognitionPage {
     return questions;
   }
 
-  disableButton() {
+  disableNextButton() {
     return this.userSelection == null;
   }
 
