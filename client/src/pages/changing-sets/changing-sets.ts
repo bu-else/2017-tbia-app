@@ -7,6 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'changing-sets.html',
 })
 export class ChangingSetsPage {
+  private index = 0;
   private assessment;
   private assessmentStartTime;
   private questionStartTime;
@@ -84,18 +85,27 @@ export class ChangingSetsPage {
   }
 
   submit() {
-    let moment = require('moment');
-    let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
-    let start = moment(this.assessmentStartTime, "YYYYMMDD HH:mm:ss");
-    let timeElapsed = end.diff(start, 'seconds');
+    if (this.index < this.assessment.length - 1) {
+      let moment = require('moment');
+      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
+      let start = moment(this.assessmentStartTime, "YYYYMMDD HH:mm:ss");
+      let timeElapsed = end.diff(start, 'seconds');
 
-    this.slides.lockSwipes(false);
-    this.slides.slideNext();
-    this.slides.lockSwipes(true);
-    this.questionStartTime = new Date(); 
+      this.nextSlide();
+      this.index++;
+      this.questionStartTime = new Date(); 
+    } else {
+      this.navCtrl.popToRoot();
+    }
   }
 
   @ViewChild('slides') slides;
+  nextSlide() {
+    this.slides.lockSwipes(false);
+    this.slides.slideNext();
+    this.slides.lockSwipes(true);
+  }
+
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
     console.log('ionViewDidLoad ChangingSetsPage');

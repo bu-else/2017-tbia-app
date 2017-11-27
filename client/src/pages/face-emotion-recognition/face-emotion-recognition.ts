@@ -7,6 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'face-emotion-recognition.html',
 })
 export class FaceEmotionRecognitionPage {
+  private index = 0;
   private assessment;
   private userSelection;
   private questionCount = 5;
@@ -71,10 +72,13 @@ export class FaceEmotionRecognitionPage {
   }
 
   submit() {
-    this.slides.lockSwipes(false);
-    this.slides.slideNext();
-    this.slides.lockSwipes(true);
-    this.cleanup();
+    if (this. index < this.assessment.length - 1) {
+      this.nextSlide();
+      this.index++;
+      this.cleanup();
+    } else {
+      this.navCtrl.push('ChangingSetsPage');
+    }
   }
 
   cleanup() {
@@ -82,6 +86,12 @@ export class FaceEmotionRecognitionPage {
   }
 
   @ViewChild('slides') slides;
+  nextSlide() {
+    this.slides.lockSwipes(false);
+    this.slides.slideNext();
+    this.slides.lockSwipes(true);
+  }
+
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
     console.log('ionViewDidLoad FaceEmotionRecognitionPage');

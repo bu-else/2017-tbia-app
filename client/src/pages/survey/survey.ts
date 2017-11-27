@@ -8,8 +8,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: 'survey.html',
 })
 export class SurveyPage {
-  private survey;
   private index = 0;
+  private survey;
   private userSelection;
   private userSelectionCount = 0;
 
@@ -48,12 +48,12 @@ export class SurveyPage {
   }
 
   submit() {
-    if (this.index < this.survey.length) {
+    if (this.index < this.survey.length - 1) {
       this.nextSlide(); 
       this.index++;
       this.cleanup();
     } else {
-      // route to assessment
+      this.navCtrl.push('FaceEmotionRecognitionPage');
     }
   }
 
