@@ -4,10 +4,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-survey-questions',
-  templateUrl: 'survey-questions.html',
+  selector: 'page-survey',
+  templateUrl: 'survey.html',
 })
-export class SurveyQuestionsPage {
+export class SurveyPage {
   private survey;
   private index = 0;
   private userSelection;
@@ -71,7 +71,7 @@ export class SurveyQuestionsPage {
   
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
-    console.log('ionViewDidLoad SurveyQuestionsPage');
+    console.log('ionViewDidLoad SurveyPage');
   }
 
 }

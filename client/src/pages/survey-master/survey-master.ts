@@ -12,7 +12,7 @@ export class SurveyMasterPage {
   }
 
   startSurvey(title) {
-    this.navCtrl.push('SurveyQuestionsPage');
+    this.navCtrl.push('SurveyPage');
   }
 
   ionViewDidLoad() {
