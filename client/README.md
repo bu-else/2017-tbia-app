@@ -1,5 +1,16 @@
 # 2017-tbia-app-client
 
+### Get Started
+```bash
+npm install
+```
+
+To start a local dev server for app dev/testing
+
+```bash
+ionic serve
+```
+
 ### With the Ionic CLI
 To run the application, cd into `client` and run:
 
