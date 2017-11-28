@@ -12,9 +12,9 @@ export class AssessmentMasterPage {
   }
 
   private assessments: any[] = [
-    { title: 'Face Emotion Recognition', component: 'AssessmentFaceEmotionRecognitionPage' },
-    { title: 'Changing Sets', component: 'AssessmentChangingSetsPage' },
-    { title: 'Drawing 3-D' , component: 'AssessmentDrawing3DPage' }
+    { title: 'Survey', component: 'SurveyPage' },
+    { title: 'Face Emotion Recognition', component: 'FaceEmotionRecognitionPage' },
+    { title: 'Changing Sets', component: 'ChangingSetsPage' }
   ];
 
   startAssessment(page) {

@@ -3,10 +3,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-assessment-changing-sets',
-  templateUrl: 'assessment-changing-sets.html',
+  selector: 'page-changing-sets',
+  templateUrl: 'changing-sets.html',
 })
-export class AssessmentChangingSetsPage {
+export class ChangingSetsPage {
+  private index = 0;
   private assessment;
   private assessmentStartTime;
   private questionStartTime;
@@ -51,7 +52,6 @@ export class AssessmentChangingSetsPage {
     this.assessment = this.generateQuestions(this.pattern, this.new_pattern, this.questionCount);
     this.assessmentStartTime = new Date();
     this.questionStartTime = this.assessmentStartTime;
-    console.log(this.assessmentStartTime.toString());
   }
 
   generateQuestions(pattern, new_pattern, count) {
@@ -84,21 +84,30 @@ export class AssessmentChangingSetsPage {
   }
 
   submit() {
-    let moment = require('moment');
-    let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
-    let start = moment(this.assessmentStartTime, "YYYYMMDD HH:mm:ss");
-    let timeElapsed = end.diff(start, 'seconds');
+    if (this.index < this.assessment.length - 1) {
+      let moment = require('moment');
+      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
+      let start = moment(this.assessmentStartTime, "YYYYMMDD HH:mm:ss");
+      let timeElapsed = end.diff(start, 'seconds');
 
-    this.slides.lockSwipes(false);
-    this.slides.slideNext();
-    this.slides.lockSwipes(true);
-    this.questionStartTime = new Date(); 
+      this.nextSlide();
+      this.index++;
+      this.questionStartTime = new Date(); 
+    } else {
+      this.navCtrl.popToRoot();
+    }
   }
 
   @ViewChild('slides') slides;
+  nextSlide() {
+    this.slides.lockSwipes(false);
+    this.slides.slideNext();
+    this.slides.lockSwipes(true);
+  }
+
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
-    console.log('ionViewDidLoad AssessmentChangingSetsPage');
+    console.log('ionViewDidLoad ChangingSetsPage');
   }
 
 }

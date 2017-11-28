@@ -3,10 +3,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-assessment-face-emotion-recognition',
-  templateUrl: 'assessment-face-emotion-recognition.html',
+  selector: 'page-face-emotion-recognition',
+  templateUrl: 'face-emotion-recognition.html',
 })
-export class AssessmentFaceEmotionRecognitionPage {
+export class FaceEmotionRecognitionPage {
+  private index = 0;
   private assessment;
   private userSelection;
   private questionCount = 5;
@@ -62,7 +63,7 @@ export class AssessmentFaceEmotionRecognitionPage {
     return questions;
   }
 
-  disableButton() {
+  disableNextButton() {
     return this.userSelection == null;
   }
 
@@ -71,10 +72,13 @@ export class AssessmentFaceEmotionRecognitionPage {
   }
 
   submit() {
-    this.slides.lockSwipes(false);
-    this.slides.slideNext();
-    this.slides.lockSwipes(true);
-    this.cleanup();
+    if (this. index < this.assessment.length - 1) {
+      this.nextSlide();
+      this.index++;
+      this.cleanup();
+    } else {
+      this.navCtrl.push('ChangingSetsPage');
+    }
   }
 
   cleanup() {
@@ -82,9 +86,15 @@ export class AssessmentFaceEmotionRecognitionPage {
   }
 
   @ViewChild('slides') slides;
+  nextSlide() {
+    this.slides.lockSwipes(false);
+    this.slides.slideNext();
+    this.slides.lockSwipes(true);
+  }
+
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
-    console.log('ionViewDidLoad AssessmentFaceEmotionRecognitionPage');
+    console.log('ionViewDidLoad FaceEmotionRecognitionPage');
   }
 
 }

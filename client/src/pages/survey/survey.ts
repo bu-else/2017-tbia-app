@@ -4,12 +4,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @IonicPage()
 @Component({
-  selector: 'page-survey-questions',
-  templateUrl: 'survey-questions.html',
+  selector: 'page-survey',
+  templateUrl: 'survey.html',
 })
-export class SurveyQuestionsPage {
-  private survey;
+export class SurveyPage {
   private index = 0;
+  private survey;
   private userSelection;
   private userSelectionCount = 0;
 
@@ -23,7 +23,7 @@ export class SurveyQuestionsPage {
     return this.survey[this.index];
   }
 
-  disableButton() {
+  disableNextButton() {
     if (this.currentQuestion().single_choice || this.currentQuestion().range) {
       return this.userSelection == null;
     } else if (this.currentQuestion().multiple_choices) {
@@ -48,12 +48,12 @@ export class SurveyQuestionsPage {
   }
 
   submit() {
-    if (this.index < this.survey.length) {
+    if (this.index < this.survey.length - 1) {
       this.nextSlide(); 
       this.index++;
       this.cleanup();
     } else {
-      // route to assessment
+      this.navCtrl.push('FaceEmotionRecognitionPage');
     }
   }
 
@@ -71,7 +71,7 @@ export class SurveyQuestionsPage {
   
   ionViewDidLoad() {
     this.slides.lockSwipes(true);
-    console.log('ionViewDidLoad SurveyQuestionsPage');
+    console.log('ionViewDidLoad SurveyPage');
   }
 
 }
