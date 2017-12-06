@@ -8,6 +8,7 @@ db.drop_collection('assessments')
 db.create_collection('assessments')
 assessments = db.assessments
 
+count = 0
 path = "./../assessments/"
 files = [f for f in listdir(path) if isfile(join(path, f)) and f[-4:]=='json']
 json_reads = []
@@ -15,5 +16,7 @@ for f in files:
     with open(path+f, 'r') as asmnt:
         data = json.load(asmnt)
         json_reads.append(data)
+        count += 1
 
 assessments.insert_many(json_reads)
+print(count, "assessments were added to the database.")
