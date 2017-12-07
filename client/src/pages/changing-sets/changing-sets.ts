@@ -12,6 +12,7 @@ export class ChangingSetsPage {
   private assessmentStartTime;
   private questionStartTime;
   private questionCount = 5;
+  private assessmentResults = [];
 
   private pattern = {
     "question": "Choose ",
