@@ -7,10 +7,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'face-emotion-recognition.html',
 })
 export class FaceEmotionRecognitionPage {
+  /**
+   * Initialization
+   */
+  
   private index = 0;
-  private assessment;
-  private userSelection;
-  private questionCount = 5;
+  private assessment: any[];
+  private userSelection: any;
+  private currentQuestionStartTime: any;
+  private currentQuestionEndTime: any;
+  private assessmentResults = [];
 
   private template = {
     "question": "What emotion is featured here?",
@@ -42,11 +48,18 @@ export class FaceEmotionRecognitionPage {
       }
     ]
   };
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.assessment = this.generateQuestions(this.template, this.questionCount);
+    this.assessment = this.generateQuestions(this.template, 6);
+    this.currentQuestionStartTime = new Date();
   }
 
+  /**
+   * @function {generateQuestions}
+   * @param  {Object} template {assessment template}
+   * @param  {number} count   {number of questions to be generated}
+   * @return {Object[]} {assessment questions}
+   */
   generateQuestions(template, count) {
     let questions = [];
 
@@ -63,27 +76,79 @@ export class FaceEmotionRecognitionPage {
     return questions;
   }
 
+  /**
+   * Selection Behaviors
+   */
+  /**
+   * @function {disableNextButton}
+   * @return {boolean} {if user has selected an answer or not}
+   */
   disableNextButton() {
     return this.userSelection == null;
   }
 
+  /**
+   * @function {select}
+   * @param  {number} value {the answer_id detected by ion-change event}
+   * @return {void} {set currentUserSelection to answer_id}
+   */
   select(value) {
     this.userSelection = value;
   }
 
+  /**
+   * Submission Behaviors
+   */
+  /**
+   * @function {submit}
+   * @return {void} {log user response and continue to next question or assessment}
+   */
   submit() {
-    if (this. index < this.assessment.length - 1) {
-      this.nextSlide();
+    // log user response
+    this.currentQuestionEndTime = new Date();
+    let currentQuestion = this.assessment[this.index];
+    this.assessmentResults.push({
+      "question_id": currentQuestion.question_id,
+      "question": currentQuestion.question,
+      "response_standardized": currentQuestion.answers,
+      "response_corroect": currentQuestion.correct_answer,
+      "response_user_input": currentQuestion.answers[this.userSelection],
+      "response_correctness": currentQuestion.correct_answer == this.userSelection,
+      "start_time": this.currentQuestionStartTime,
+      "end_time": this.currentQuestionEndTime
+    });
+    
+    // next question
+    if (this.index < this.assessment.length - 1) {
       this.index++;
+      this.nextSlide();
       this.cleanup();
+      this.currentQuestionStartTime = new Date();
+    // next assessment
     } else {
+      let response = {
+        "title": "Assessments Results",
+        "assessment": "Face Emotion Recognition",
+        "properties": this.assessmentResults
+      };
+      console.log(response);
       this.navCtrl.push('ChangingSetsPage');
     }
   }
 
+  /**
+   * @function {cleanup}
+   * @return {void} {remove values stored for the current question}
+   */
   cleanup() {
     this.userSelection = null;
+    this.currentQuestionStartTime = null;
+    this.currentQuestionEndTime = null;
   }
+
+  /**
+   * Slides Behaviors
+   */
 
   @ViewChild('slides') slides;
   nextSlide() {

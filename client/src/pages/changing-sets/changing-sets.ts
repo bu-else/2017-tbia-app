@@ -7,11 +7,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'changing-sets.html',
 })
 export class ChangingSetsPage {
+  /**
+   * Initialization
+   */
+  
   private index = 0;
-  private assessment;
-  private assessmentStartTime;
-  private questionStartTime;
-  private questionCount = 5;
+  private assessment: any;
+  private currentQuestionStartTime: any;
+  private currentQuestionEndTime: any;
+  private assessmentResults = [];
 
   private pattern = {
     "question": "Choose ",
@@ -49,11 +53,17 @@ export class ChangingSetsPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.assessment = this.generateQuestions(this.pattern, this.new_pattern, this.questionCount);
-    this.assessmentStartTime = new Date();
-    this.questionStartTime = this.assessmentStartTime;
+    this.assessment = this.generateQuestions(this.pattern, this.new_pattern, 5);
+    this.currentQuestionStartTime = new Date();
   }
 
+  /**
+   * @function {generateQuestions}
+   * @param  {Object} pattern     {a JSON object of the pattern}
+   * @param  {Object} new_pattern {a JSON object of the new pattern}
+   * @param  {number} count       {number of questions generated}
+   * @return {void} {assessment questions generated}
+   */
   generateQuestions(pattern, new_pattern, count) {
     let questions = [];
 
@@ -83,20 +93,60 @@ export class ChangingSetsPage {
     return questions;
   }
 
-  submit() {
-    if (this.index < this.assessment.length - 1) {
-      let moment = require('moment');
-      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
-      let start = moment(this.assessmentStartTime, "YYYYMMDD HH:mm:ss");
-      let timeElapsed = end.diff(start, 'seconds');
+  /**
+   * Submission Behaviors
+   */
+  
+  /**
+   * @function {submit}
+   * @param  {number} value {the answer_id of the button clicked}
+   * @return {void} {log user response for current question, then go to the next page or assessment}
+   */
+  submit(value) {
+    // log user response
+    this.currentQuestionEndTime = new Date();
+    let currentQuestion = this.assessment[this.index];
+    if (!currentQuestion.message) {
+      let userSelection = value;
+      this.assessmentResults.push({
+        "question_id": currentQuestion.question_id,
+        "question": currentQuestion.question,
+        "response_standardized": currentQuestion.answers,
+        "response_corroect": currentQuestion.correct_answer,
+        "response_user_input": currentQuestion.answers[userSelection],
+        "response_correctness": currentQuestion.correct_answer == userSelection,
+        "start_time": this.currentQuestionStartTime,
+        "end_time": this.currentQuestionEndTime
+      });
+    }
 
+    if (this.index < this.assessment.length - 1) {
       this.nextSlide();
       this.index++;
-      this.questionStartTime = new Date(); 
+      this.currentQuestionStartTime = new Date();
     } else {
+      let response = {
+        "title": "Assessment Results",
+        "assessment": "Changing Sets",
+        "properties": this.assessmentResults
+      };
+      console.log(response);
       this.navCtrl.popToRoot();
     }
   }
+
+  /**
+   * @function {cleanup}
+   * @return {void} {remove values stored in the variables}
+   */
+  cleanup() {
+    this.currentQuestionStartTime = null;
+    this.currentQuestionEndTime = null;
+  }
+
+  /**
+   * Slides Behaviors
+   */
 
   @ViewChild('slides') slides;
   nextSlide() {
