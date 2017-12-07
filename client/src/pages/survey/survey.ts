@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -13,9 +14,11 @@ export class SurveyPage {
   private userSelection;
   private userSelectionCount = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
-    this.http.get('../assets/data/survey/survey.json').subscribe(res => {
-      this.survey = res;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api) {
+    this.api.get('surveys').subscribe(res => {
+      this.survey = res["assessments"][0]["questions"];
+    }, err => {
+      console.log(err);
     })
   }
 
