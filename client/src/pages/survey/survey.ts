@@ -25,7 +25,9 @@ export class SurveyPage {
     this.api.get('surveys').subscribe(res => {
       this.survey = res["assessments"][0]["questions"];
     }, err => {
-      console.log(err);
+      this.http.get('../assets/data/survey/survey.json').subscribe(res => {
+        this.survey = res;
+      });
     })
     this.currentQuestionStartTime = new Date();
   }
