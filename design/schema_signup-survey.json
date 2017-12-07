@@ -22,5 +22,5 @@
         },
 
         "required": ["userID", "sessionID", "deviceID"]
-
     }
+}
