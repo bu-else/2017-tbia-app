@@ -8,11 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FaceEmotionRecognitionPage {
   private index = 0;
-  private assessment;
-  private userSelection;
-  private questionCount = 5;
-  private assessmentStartTime;
-  private questionStartTime;
+  private assessment: any[];
+  private userSelection: any;
+  private currentQuestionStartTime: any;
+  private currentQuestionEndTime: any;
   private assessmentResults = [];
 
   private template = {
@@ -47,7 +46,8 @@ export class FaceEmotionRecognitionPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.assessment = this.generateQuestions(this.template, this.questionCount);
+    this.assessment = this.generateQuestions(this.template, 6);
+    this.currentQuestionStartTime = new Date();
   }
 
   generateQuestions(template, count) {
@@ -74,23 +74,47 @@ export class FaceEmotionRecognitionPage {
     this.userSelection = value;
   }
 
-  submit() {
-    if (this. index < this.assessment.length - 1) {
-      let moment = require('moment');
-      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
-      let start = moment(this.questionStartTime, "YYYYMMDD HH:mm:ss");
-      let timeElapsed = end.diff(start, 'seconds');
+  /**
+   * Submission Behaviors
+   */
 
-      this.nextSlide();
+  submit() {
+    // log user response
+    this.currentQuestionEndTime = new Date();
+    let currentQuestion = this.assessment[this.index];
+    this.assessmentResults.push({
+      "question_id": currentQuestion.question_id,
+      "question": currentQuestion.question,
+      "response_standardized": currentQuestion.answers,
+      "response_corroect": currentQuestion.correct_answer,
+      "response_user_input": currentQuestion.answers[this.userSelection],
+      "response_correctness": currentQuestion.correct_answer == this.userSelection,
+      "start_time": this.currentQuestionStartTime,
+      "end_time": this.currentQuestionEndTime
+    });
+    
+    // next question
+    if (this.index < this.assessment.length - 1) {
       this.index++;
+      this.nextSlide();
       this.cleanup();
+      this.currentQuestionStartTime = new Date();
+    // next assessment
     } else {
+      let response = {
+        "title": "Assessments Results",
+        "assessment": "Face Emotion Recognition",
+        "properties": this.assessmentResults
+      };
+      console.log(response);
       this.navCtrl.push('ChangingSetsPage');
     }
   }
 
   cleanup() {
     this.userSelection = null;
+    this.currentQuestionStartTime = null;
+    this.currentQuestionEndTime = null;
   }
 
   @ViewChild('slides') slides;
