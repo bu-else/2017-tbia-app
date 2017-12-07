@@ -7,6 +7,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'face-emotion-recognition.html',
 })
 export class FaceEmotionRecognitionPage {
+  /**
+   * Initialization
+   */
+  
   private index = 0;
   private assessment: any[];
   private userSelection: any;
@@ -44,12 +48,18 @@ export class FaceEmotionRecognitionPage {
       }
     ]
   };
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.assessment = this.generateQuestions(this.template, 6);
     this.currentQuestionStartTime = new Date();
   }
 
+  /**
+   * @function {generateQuestions}
+   * @param  {Object} template {assessment template}
+   * @param  {number} count   {number of questions to be generated}
+   * @return {Object[]} {assessment questions}
+   */
   generateQuestions(template, count) {
     let questions = [];
 
@@ -65,6 +75,10 @@ export class FaceEmotionRecognitionPage {
     }
     return questions;
   }
+
+  /**
+   * Selection Behaviors
+   */
 
   disableNextButton() {
     return this.userSelection == null;
@@ -116,6 +130,10 @@ export class FaceEmotionRecognitionPage {
     this.currentQuestionStartTime = null;
     this.currentQuestionEndTime = null;
   }
+
+  /**
+   * Slides Behaviors
+   */
 
   @ViewChild('slides') slides;
   nextSlide() {
