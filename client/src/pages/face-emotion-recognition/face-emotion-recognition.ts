@@ -79,11 +79,19 @@ export class FaceEmotionRecognitionPage {
   /**
    * Selection Behaviors
    */
-
+  /**
+   * @function {disableNextButton}
+   * @return {boolean} {if user has selected an answer or not}
+   */
   disableNextButton() {
     return this.userSelection == null;
   }
 
+  /**
+   * @function {select}
+   * @param  {number} value {the answer_id detected by ion-change event}
+   * @return {void} {set currentUserSelection to answer_id}
+   */
   select(value) {
     this.userSelection = value;
   }
@@ -91,7 +99,10 @@ export class FaceEmotionRecognitionPage {
   /**
    * Submission Behaviors
    */
-
+  /**
+   * @function {submit}
+   * @return {void} {log user response and continue to next question or assessment}
+   */
   submit() {
     // log user response
     this.currentQuestionEndTime = new Date();
@@ -125,6 +136,10 @@ export class FaceEmotionRecognitionPage {
     }
   }
 
+  /**
+   * @function {cleanup}
+   * @return {void} {remove values stored for the current question}
+   */
   cleanup() {
     this.userSelection = null;
     this.currentQuestionStartTime = null;
