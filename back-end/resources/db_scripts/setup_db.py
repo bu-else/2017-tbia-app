@@ -2,10 +2,14 @@ import json
 from os import listdir
 from os.path import isfile, join
 from pymongo import MongoClient
+
 client = MongoClient('mongodb://localhost:27017/')
-db = client['tbia'] #the tbia database
+db = client['anchor'] #the tbia database
+
+# Assessments
 db.drop_collection('assessments')
 db.create_collection('assessments')
+print("\nAssessments collection dropped and recreated.")
 assessments = db.assessments
 
 count = 0
@@ -19,4 +23,9 @@ for f in files:
         count += 1
 
 assessments.insert_many(json_reads)
-print(count, "assessments were added to the database.")
+print(count, "assessments were added to the database.\n")
+
+# Responses
+db.drop_collection('responses')
+db.create_collection('responses')
+print("Responses collection dropped and recreated.\n")
