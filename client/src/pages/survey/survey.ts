@@ -12,6 +12,8 @@ export class SurveyPage {
   private survey;
   private userSelection;
   private userSelectionCount = 0;
+  private questionStartTime;
+  private assessmentResults = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.http.get('../assets/data/survey/survey.json').subscribe(res => {
@@ -49,6 +51,11 @@ export class SurveyPage {
 
   submit() {
     if (this.index < this.survey.length - 1) {
+      let moment = require('moment');
+      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
+      let start = moment(this.questionStartTime, "YYYYMMDD HH:mm:ss");
+      let timeElapsed = end.diff(start, 'seconds');
+
       this.nextSlide(); 
       this.index++;
       this.cleanup();

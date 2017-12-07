@@ -11,6 +11,12 @@ export class FaceEmotionRecognitionPage {
   private assessment;
   private userSelection;
   private questionCount = 5;
+<<<<<<< Updated upstream
+=======
+  private assessmentStartTime;
+  private questionStartTime;
+  private assessmentResults = [];
+>>>>>>> Stashed changes
 
   private template = {
     "question": "What emotion is featured here?",
@@ -73,6 +79,14 @@ export class FaceEmotionRecognitionPage {
 
   submit() {
     if (this. index < this.assessment.length - 1) {
+<<<<<<< Updated upstream
+=======
+      let moment = require('moment');
+      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
+      let start = moment(this.questionStartTime, "YYYYMMDD HH:mm:ss");
+      let timeElapsed = end.diff(start, 'seconds');
+
+>>>>>>> Stashed changes
       this.nextSlide();
       this.index++;
       this.cleanup();
