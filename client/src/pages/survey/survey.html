@@ -13,7 +13,7 @@
         <ion-list no-lines radio-group (ionChange)="select($event)">
           <ion-item *ngFor="let a of s.answers">
             <ion-label>{{a.answer}}</ion-label>
-            <ion-radio value="{{a.answer}}"></ion-radio>
+            <ion-radio value="{{a.answer_id}}"></ion-radio>
           </ion-item>
         </ion-list>
       </div>
