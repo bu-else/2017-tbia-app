@@ -9,11 +9,16 @@ import { Api } from '../../providers/providers';
   templateUrl: 'survey.html',
 })
 export class SurveyPage {
+  /**
+   * Initialization
+   */
+
   private index = 0;
-  private survey;
-  private userSelection;
-  private userSelectionCount = 0;
-  private questionStartTime;
+  private survey: any;
+  private userSelection: any;
+  private userSelectionCount = 0;        /* used for multi selection */
+  private currentQuestionStartTime: any;
+  private currentQuestionEndTime: any;
   private assessmentResults = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api) {
@@ -22,12 +27,25 @@ export class SurveyPage {
     }, err => {
       console.log(err);
     })
+    this.currentQuestionStartTime = new Date();
   }
+  
+  /**
+   * Selection Behaviors
+   */
 
+  /**
+   * @function {currentQuestion}
+   * @return {Object} {the current question in survey}
+   */
   currentQuestion() {
     return this.survey[this.index];
   }
 
+  /**
+   * @function {disableNextButton}
+   * @return {boolean} {if user has selected an answer or not}
+   */
   disableNextButton() {
     if (this.currentQuestion().single_choice || this.currentQuestion().range) {
       return this.userSelection == null;
@@ -36,10 +54,20 @@ export class SurveyPage {
     }
   }
 
+  /**
+   * @function {select}
+   * @param  {number} value {the answer_id detected by ion-change event}
+   * @return {void} {set userSelection to the answer_id}
+   */
   select(value) {
     this.userSelection = value;
   }
 
+  /**
+   * @function {updateSelectionCount}
+   * @param  {Object} value {the changed variable detected by ion-change event}
+   * @return {void} {update userSelectionCount for multiple choices question}
+   */
   updateSelectionCount(value) {
     if (value.checked) {
       this.userSelectionCount += 1;
@@ -48,28 +76,67 @@ export class SurveyPage {
     }
   }
 
+  /**
+   * @function {updateRange}
+   * @param  {number} value {the answer detected by ion-change event}
+   * @return {void} {update userSelection for range question}
+   */
   updateRange(value) {
     this.userSelection = value.value;
   }
 
-  submit() {
-    if (this.index < this.survey.length - 1) {
-      let moment = require('moment');
-      let end = moment(new Date(), "YYYYMMDD HH: mm: ss");
-      let start = moment(this.questionStartTime, "YYYYMMDD HH:mm:ss");
-      let timeElapsed = end.diff(start, 'seconds');
+  /**
+   * Submission Behaviors
+   */
 
-      this.nextSlide(); 
+  /**
+   * @function {function name}
+   * @return {type} {description}
+   */
+  submit() {
+    // log user response
+    this.currentQuestionEndTime = new Date();
+    let currentQuestion = this.currentQuestion();
+    let response_user_input: any;
+    if (currentQuestion.single_choice || currentQuestion.range) {
+      response_user_input = this.userSelection;
+    } else if (currentQuestion.multiple_choices) {
+      // 
+    }
+    this.assessmentResults.push({
+      "question_id": currentQuestion.question_id,
+      "response_user_input": response_user_input,
+      "start_time": this.currentQuestionStartTime,
+      "end_time": this.currentQuestionEndTime
+    });
+
+    // next question
+    if (this.index < this.survey.length - 1) {
       this.index++;
+      this.nextSlide();
       this.cleanup();
+      this.currentQuestionStartTime = new Date();
+    // next assessment
     } else {
+      let response = {
+        "title": "Assessment Results",
+        "assessment": "Survey",
+        "properties": this.assessmentResults
+      };
+      console.log(response);
       this.navCtrl.push('FaceEmotionRecognitionPage');
     }
   }
 
+  /**
+   * @function {cleanup}
+   * @return {void} {set userSelection and time to null}
+   */
   cleanup() {
     this.userSelection = null;
     this.userSelectionCount = 0;
+    this.currentQuestionStartTime = null;
+    this.currentQuestionEndTime = null;
   }
   
   @ViewChild('slides') slides;
