@@ -1,4 +1,4 @@
-page-assessment-changing-sets {
+page-changing-sets {
     .button-container {
         padding: 1em 0;
     }
@@ -6,4 +6,8 @@ page-assessment-changing-sets {
     .button-height {
         height: 30vh;
     }
+    
+    .button-container button[disabled] {
+        opacity: 1 !important;
+    } 
 }

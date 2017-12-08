@@ -1,0 +1,151 @@
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+@IonicPage()
+@Component({
+  selector: 'page-survey',
+  templateUrl: 'survey.html',
+})
+export class SurveyPage {
+  /**
+   * Initialization
+   */
+
+  private index = 0;
+  private survey: any;
+  private userSelection: any;
+  private userSelectionCount = 0;        /* used for multi selection */
+  private currentQuestionStartTime: any;
+  private currentQuestionEndTime: any;
+  private assessmentResults = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    this.http.get('../assets/data/survey/survey.json').subscribe(res => {
+      this.survey = res;
+    })
+    this.currentQuestionStartTime = new Date();
+  }
+  
+  /**
+   * Selection Behaviors
+   */
+
+  /**
+   * @function {currentQuestion}
+   * @return {Object} {the current question in survey}
+   */
+  currentQuestion() {
+    return this.survey[this.index];
+  }
+
+  /**
+   * @function {disableNextButton}
+   * @return {boolean} {if user has selected an answer or not}
+   */
+  disableNextButton() {
+    if (this.currentQuestion().single_choice || this.currentQuestion().range) {
+      return this.userSelection == null;
+    } else if (this.currentQuestion().multiple_choices) {
+      return this.userSelectionCount == 0;
+    }
+  }
+
+  /**
+   * @function {select}
+   * @param  {number} value {the answer_id detected by ion-change event}
+   * @return {void} {set userSelection to the answer_id}
+   */
+  select(value) {
+    this.userSelection = value;
+  }
+
+  /**
+   * @function {updateSelectionCount}
+   * @param  {Object} value {the changed variable detected by ion-change event}
+   * @return {void} {update userSelectionCount for multiple choices question}
+   */
+  updateSelectionCount(value) {
+    if (value.checked) {
+      this.userSelectionCount += 1;
+    } else {
+      this.userSelectionCount -= 1;
+    }
+  }
+
+  /**
+   * @function {updateRange}
+   * @param  {number} value {the answer detected by ion-change event}
+   * @return {void} {update userSelection for range question}
+   */
+  updateRange(value) {
+    this.userSelection = value.value;
+  }
+
+  /**
+   * Submission Behaviors
+   */
+
+  /**
+   * @function {function name}
+   * @return {type} {description}
+   */
+  submit() {
+    // log user response
+    this.currentQuestionEndTime = new Date();
+    let currentQuestion = this.currentQuestion();
+    let response_user_input: any;
+    if (currentQuestion.single_choice || currentQuestion.range) {
+      response_user_input = this.userSelection;
+    } else if (currentQuestion.multiple_choices) {
+      // 
+    }
+    this.assessmentResults.push({
+      "question_id": currentQuestion.question_id,
+      "response_user_input": response_user_input,
+      "start_time": this.currentQuestionStartTime,
+      "end_time": this.currentQuestionEndTime
+    });
+
+    // next question
+    if (this.index < this.survey.length - 1) {
+      this.index++;
+      this.nextSlide();
+      this.cleanup();
+      this.currentQuestionStartTime = new Date();
+    // next assessment
+    } else {
+      let response = {
+        "title": "Assessment Results",
+        "assessment": "Survey",
+        "properties": this.assessmentResults
+      };
+      console.log(response);
+      this.navCtrl.push('FaceEmotionRecognitionPage');
+    }
+  }
+
+  /**
+   * @function {cleanup}
+   * @return {void} {set userSelection and time to null}
+   */
+  cleanup() {
+    this.userSelection = null;
+    this.userSelectionCount = 0;
+    this.currentQuestionStartTime = null;
+    this.currentQuestionEndTime = null;
+  }
+  
+  @ViewChild('slides') slides;
+  nextSlide() {
+    this.slides.lockSwipes(false);
+    this.slides.slideNext();
+    this.slides.lockSwipes(true);
+  }
+  
+  ionViewDidLoad() {
+    this.slides.lockSwipes(true);
+    console.log('ionViewDidLoad SurveyPage');
+  }
+
+}

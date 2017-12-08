@@ -12,15 +12,15 @@
       </ion-card>
 
       <h4 [innerHTML]="q.question"></h4>
-      <ion-list no-lines radio-group [(ngModel)]="autoManufacturers">
+      <ion-list no-lines radio-group (ionChange)=select($event)>
         <ion-item *ngFor="let a of q.answers">
           <ion-label>{{a.answer}}</ion-label>
-          <ion-radio></ion-radio>
+          <ion-radio value="{{a.answer_id}}"></ion-radio>
         </ion-item>
       </ion-list>
       
       <ion-buttons>
-        <button ion-button outline block (click)="submit()">Next</button>
+        <button ion-button outline block (click)="submit()" [disabled]="disableNextButton()">Next</button>
       </ion-buttons>
     </ion-slide>
   </ion-slides>

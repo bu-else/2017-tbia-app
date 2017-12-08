@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AssessmentChangingSetsPage } from './assessment-changing-sets';
+import { ChangingSetsPage } from './changing-sets';
 
 @NgModule({
   declarations: [
-    AssessmentChangingSetsPage,
+    ChangingSetsPage,
   ],
   imports: [
-    IonicPageModule.forChild(AssessmentChangingSetsPage),
+    IonicPageModule.forChild(ChangingSetsPage),
   ],
 })
 export class AssessmentChangingSetsPageModule {}
