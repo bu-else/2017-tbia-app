@@ -107,14 +107,14 @@ export class ChangingSetsPage {
     this.currentQuestionEndTime = new Date();
     let currentQuestion = this.assessment[this.index];
     if (!currentQuestion.message) {
-      let userSelection = value;
+      let userSelection = value; // answer_id
       this.assessmentResults.push({
         "question_id": currentQuestion.question_id,
         "question": currentQuestion.question,
         "response_standardized": currentQuestion.answers,
-        "response_corroect": currentQuestion.correct_answer,
-        "response_user_input": currentQuestion.answers[userSelection],
-        "response_correctness": currentQuestion.correct_answer == userSelection,
+        "response_correct": currentQuestion.correct_answer,
+        "response_user_input": currentQuestion.answers[userSelection - 1],
+        "response_correctness": currentQuestion.correct_answer.answer_id == userSelection,
         "start_time": this.currentQuestionStartTime.toString(),
         "end_time": this.currentQuestionEndTime.toString()
       });
