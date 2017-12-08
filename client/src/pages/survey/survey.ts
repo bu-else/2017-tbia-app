@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Api } from '../../providers/providers';
 
 @IonicPage()
@@ -13,13 +13,13 @@ export class SurveyPage {
    * Initialization
    */
 
-  private index = 0;
-  private survey: any;
-  private userSelection: any;
-  private userSelectionCount = 0;        /* used for multi selection */
-  private currentQuestionStartTime: any;
-  private currentQuestionEndTime: any;
-  private assessmentResults = [];
+  private index = 0;                      // the index of the slides
+  private survey: any;                    // questions fetched from the server
+  private userSelection: any;             // the answer selected for a single-selection or range question
+  private userSelectionCount = 0;         // the number of choices checked for a multi-selection question
+  private currentQuestionStartTime: any;  // start time for the current question
+  private currentQuestionEndTime: any;    // end time for the current question
+  private assessmentResults = [];         // an array of user's response to each question
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api) {
     this.api.get('surveys').subscribe(res => {
