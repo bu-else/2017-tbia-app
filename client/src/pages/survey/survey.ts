@@ -68,12 +68,14 @@ export class SurveyPage {
   /**
    * @function {updateSelectionCount}
    * @param  {Object} value {the changed variable detected by ion-change event}
-   * @return {void} {update userSelectionCount for multiple choices question}
+   * @return {void} {update user selections for multiple choices question}
    */
-  updateSelectionCount(value) {
+  updateUserSelection(value, index) {
     if (value.checked) {
+      this.survey[this.index].answers[index].checked = true;
       this.userSelectionCount += 1;
     } else {
+      this.survey[this.index].answers[index].checked = false;
       this.userSelectionCount -= 1;
     }
   }
@@ -103,7 +105,10 @@ export class SurveyPage {
     if (currentQuestion.single_choice || currentQuestion.range) {
       response_user_input = this.userSelection;
     } else if (currentQuestion.multiple_choices) {
-      // 
+      response_user_input = currentQuestion.answers.reduce(function (response_user_input, choice) {
+        if (choice.checked) response_user_input.push(choice.answer);
+        return response_user_input;
+      },[]);
     }
     this.assessmentResults.push({
       "question_id": currentQuestion.question_id,
