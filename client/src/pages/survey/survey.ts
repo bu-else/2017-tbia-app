@@ -12,17 +12,6 @@ export class SurveyPage {
   /**
    * Initialization
    */
-<<<<<<< HEAD
-=======
-
-  private index = 0;
-  private survey: any;
-  private userSelection: any;
-  private userSelectionCount = 0;        /* used for multi selection */
-  private currentQuestionStartTime: any;
-  private currentQuestionEndTime: any;
-  private assessmentResults = [];
->>>>>>> develop
 
   private index = 0;                      // the index of the slides
   private survey: any;                    // questions fetched from the server
