@@ -108,8 +108,8 @@ export class SurveyPage {
     this.assessmentResults.push({
       "question_id": currentQuestion.question_id,
       "response_user_input": response_user_input,
-      "start_time": this.currentQuestionStartTime,
-      "end_time": this.currentQuestionEndTime
+      "start_time": this.currentQuestionStartTime.toString(),
+      "end_time": this.currentQuestionEndTime.toString()
     });
 
     // next question

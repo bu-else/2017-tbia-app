@@ -114,8 +114,8 @@ export class FaceEmotionRecognitionPage {
       "response_corroect": currentQuestion.correct_answer,
       "response_user_input": currentQuestion.answers[this.userSelection],
       "response_correctness": currentQuestion.correct_answer == this.userSelection,
-      "start_time": this.currentQuestionStartTime,
-      "end_time": this.currentQuestionEndTime
+      "start_time": this.currentQuestionStartTime.toString(),
+      "end_time": this.currentQuestionEndTime.toString()
     });
     
     // next question

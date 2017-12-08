@@ -115,8 +115,8 @@ export class ChangingSetsPage {
         "response_corroect": currentQuestion.correct_answer,
         "response_user_input": currentQuestion.answers[userSelection],
         "response_correctness": currentQuestion.correct_answer == userSelection,
-        "start_time": this.currentQuestionStartTime,
-        "end_time": this.currentQuestionEndTime
+        "start_time": this.currentQuestionStartTime.toString(),
+        "end_time": this.currentQuestionEndTime.toString()
       });
     }
 
