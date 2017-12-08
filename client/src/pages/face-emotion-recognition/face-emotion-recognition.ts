@@ -111,9 +111,9 @@ export class FaceEmotionRecognitionPage {
       "question_id": currentQuestion.question_id,
       "question": currentQuestion.question,
       "response_standardized": currentQuestion.answers,
-      "response_corroect": currentQuestion.correct_answer,
-      "response_user_input": currentQuestion.answers[this.userSelection],
-      "response_correctness": currentQuestion.correct_answer == this.userSelection,
+      "response_correct": currentQuestion.correct_answer,
+      "response_user_input": currentQuestion.answers[this.userSelection - 1],
+      "response_correctness": currentQuestion.correct_answer.answer_id == this.userSelection,
       "start_time": this.currentQuestionStartTime.toString(),
       "end_time": this.currentQuestionEndTime.toString()
     });
