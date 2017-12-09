@@ -16,7 +16,7 @@ export class LoginPage {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   // Attempt to login in through our User service
