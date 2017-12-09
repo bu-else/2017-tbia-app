@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="signupProfileForm" (ngSubmit)="submitProfile()">
+    <ion-list>
+      <ion-list-header>General</ion-list-header>
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Age</ion-label>
+        <ion-input type="number" formControlName="age"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select type="text" formControlName="gender">
+          <ion-option value="Male">Male</ion-option>
+          <ion-option value="Female">Female</ion-option>
+          <ion-option value="Others">Others</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list>
+      <ion-list-header>Current Head Injury</ion-list-header>
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" formControlName="currentInjuryDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Medical Problems</ion-label> 
+        <ion-select multiple="true" type="text" formControlName="currentInjuryMedicalProblems">
+          <ion-option value="IE migraines">IE migraines</ion-option>
+          <ion-option value="Sleep difficulties">Sleep difficulties</ion-option>
+          <ion-option value="Memory">Memory</ion-option>
+          <ion-option value="Mood issues at baseline">Mood issues at baseline</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list>
+      <ion-list-header>Prior Head Injury</ion-list-header>
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" formControlName="priorInjuryDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Medical Problems</ion-label>
+        <ion-select multiple="true" type="text" formControlName="priorInjuryMedicalProblems">
+          <ion-option value="IE migraines">IE migraines</ion-option>
+          <ion-option value="Sleep difficulties">Sleep difficulties</ion-option>
+          <ion-option value="Memory">Memory</ion-option>
+          <ion-option value="Mood issues at baseline">Mood issues at baseline</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item [hidden]="signupProfileForm.valid || signupProfileForm.pristine">
+      <p color="danger">General and Current Head Injury are required.</p>
+    </ion-item>
+    
+    <button padding ion-button block [disabled]="!signupProfileForm.valid">Submit</button>
+  </form>
+</ion-content>

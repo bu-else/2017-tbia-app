@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Api } from '../../providers/providers';
 
@@ -21,7 +21,7 @@ export class SurveyPage {
   private currentQuestionEndTime: any;    // end time for the current question
   private assessmentResults = [];         // an array of user's response to each question
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
     this.api.get('surveys').subscribe(res => {
       this.survey = res["assessments"][0]["questions"];
     }, err => {
@@ -131,7 +131,8 @@ export class SurveyPage {
         "properties": this.assessmentResults
       };
       console.log(response);
-      this.navCtrl.push('FaceEmotionRecognitionPage');
+      this.viewCtrl.dismiss();
+      this.appCtrl.getRootNav().push('FaceEmotionRecognitionPage');
     }
   }
 

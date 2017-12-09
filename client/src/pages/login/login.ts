@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { User } from '../../providers/providers';
 
 @IonicPage()
@@ -8,18 +9,19 @@ import { User } from '../../providers/providers';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  account: { email: string, password: string } = {
-    email: 'test@example.com',
-    password: 'test'
-  };
-
+  private loginForm: FormGroup;
   private loginErrorString = "Unable to sign in. Please check your account information and try again.";
 
-  constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   // Attempt to login in through our User service
   doLogin() {
+    console.log(this.loginForm.value);
     this.navCtrl.push('TabsPage');
     // this.user.login(this.account).subscribe((resp) => {
     //   this.navCtrl.push('TabsPage');
