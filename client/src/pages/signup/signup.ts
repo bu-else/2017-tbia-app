@@ -20,7 +20,7 @@ export class SignupPage {
   }
 
   doSignup() {
-    this.navCtrl.push('TabsPage');
+    this.navCtrl.push('SignupProfilePage');
     // Attempt to login in through our User service
     // this.user.signup(this.account).subscribe((resp) => {
     //   this.navCtrl.push('TabsPage');

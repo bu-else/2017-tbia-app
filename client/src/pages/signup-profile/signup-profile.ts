@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DateTime } from 'ionic-angular/components/datetime/datetime';
 
 @IonicPage()
 @Component({
@@ -7,8 +8,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'signup-profile.html',
 })
 export class SignupProfilePage {
+  profile = {
+    name: 'Test Human',
+    age: 32,
+    gender: 'female',
+    currentInjuryDate: '2017-12-19',
+    currentInjuryMedicalProblems: '',
+    priorInjuryTime: '1983-12-19',
+    priorInjuryMedicalProblems: ''
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  submitProfile() {
+    this.navCtrl.push('TabsPage');
   }
 
   ionViewDidLoad() {
