@@ -10,15 +10,15 @@
       <ion-list-header>General</ion-list-header>
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="profile.name" name="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="profile.name" name="name" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Age</ion-label>
-        <ion-input type="number" [(ngModel)]="profile.age" name="age"></ion-input>
+        <ion-input type="number" [(ngModel)]="profile.age" name="age" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Gender</ion-label>
-        <ion-select type="text" [(ngModel)]="profile.gender" name="gender">
+        <ion-select type="text" [(ngModel)]="profile.gender" name="gender" required>
           <ion-option value="Male">Male</ion-option>
           <ion-option value="Female">Female</ion-option>
           <ion-option value="Others">Others</ion-option>
@@ -30,11 +30,11 @@
       <ion-list-header>Current Head Injury</ion-list-header>
       <ion-item>
         <ion-label>Time</ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="profile.currentInjuryDate" name="currentInjuryDate"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="profile.currentInjuryDate" name="currentInjuryDate" ></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Medical Problems</ion-label> 
-        <ion-select multiple="true" type="text" [(ngModel)]="profile.currentInjuryMedicalProblems" name="currentInjuryMedicalProblems">
+        <ion-select multiple="true" type="text" [(ngModel)]="profile.currentInjuryMedicalProblems" name="currentInjuryMedicalProblems" required>
           <ion-option value="IE migraines">IE migraines</ion-option>
           <ion-option value="Sleep difficulties">Sleep difficulties</ion-option>
           <ion-option value="Memory">Memory</ion-option>

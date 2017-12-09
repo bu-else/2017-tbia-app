@@ -8,7 +8,7 @@ import { User } from '../../providers/providers';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  account: { name: string, email: string, password: string } = {
+  private account: { name: string, email: string, password: string } = {
     name: 'Test Human',
     email: 'test@example.com',
     password: 'test'
