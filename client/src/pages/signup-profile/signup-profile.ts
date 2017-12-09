@@ -8,7 +8,7 @@ import { DateTime } from 'ionic-angular/components/datetime/datetime';
   templateUrl: 'signup-profile.html',
 })
 export class SignupProfilePage {
-  profile = {
+  private profile = {
     name: 'Test Human',
     age: 32,
     gender: 'female',
@@ -22,6 +22,7 @@ export class SignupProfilePage {
   }
 
   submitProfile() {
+    console.log(this.profile);
     this.navCtrl.push('TabsPage');
   }
 
