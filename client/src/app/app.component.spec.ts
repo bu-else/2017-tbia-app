@@ -34,7 +34,6 @@ describe('MyApp Component', () => {
   });
 
   it('should have two pages', () => {
-    // expected to be 3 in production; currently 7 for debugging
     expect(component.pages.length).toBe(7);
   });
 
