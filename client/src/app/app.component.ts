@@ -12,13 +12,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Profile', component: 'ProfileMasterPage'},
-    { title: 'Change Password', component: ''},
-    { title: 'Log Out', component: ''},
-    { title: 'Welcome', component: 'WelcomePage' }, // for debugging only
-    { title: 'Tabs', component: 'TabsPage' },       // for debugging only
-    { title: 'Login', component: 'LoginPage' },     // for debugging only
-    { title: 'Signup', component: 'SignupPage' },   // for debugging only
+    { title: 'Profile', component: 'ProfileMasterPage' },
+    { title: 'Log Out', component: 'WelcomePage' }
   ]
 
   constructor(platform: Platform, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
