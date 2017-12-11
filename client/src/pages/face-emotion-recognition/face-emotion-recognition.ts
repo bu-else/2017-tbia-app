@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
-import { Api } from '../../providers/providers'
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -128,12 +128,12 @@ export class FaceEmotionRecognitionPage {
     // next assessment
     } else {
       let response = {
-        "title": "Assessments Results",
-        "assessment": "Face Emotion Recognition",
-        "properties": this.assessmentResults
+        "userId": "",
+        "assessment_result": this.assessmentResults
       };
       console.log(response);
-      // this.api.post('responses', response);
+      let post = this.api.post('responses', response); // fix this
+      console.log(post);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
     }

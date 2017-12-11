@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -52,7 +53,7 @@ export class ChangingSetsPage {
     ]
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
     this.assessment = this.generateQuestions(this.pattern, this.new_pattern, 5);
     this.currentQuestionStartTime = new Date();
   }
@@ -126,11 +127,12 @@ export class ChangingSetsPage {
       this.currentQuestionStartTime = new Date();
     } else {
       let response = {
-        "title": "Assessment Results",
-        "assessment": "Changing Sets",
-        "properties": this.assessmentResults
+        "userId": "",
+        "assessment_result": this.assessmentResults
       };
       console.log(response);
+      let post = this.api.post('responses', response); // fix this
+      console.log(post);
       this.navCtrl.popToRoot();
     }
   }
