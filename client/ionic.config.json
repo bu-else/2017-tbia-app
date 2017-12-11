@@ -2,5 +2,11 @@
   "name": "client",
   "app_id": "",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {},
+  "proxies": [
+    {
+      "path": "/",
+      "proxyUrl": "http://localhost:9000/"
+    }
+  ]
 }
