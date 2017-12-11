@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
+import { Api } from '../../providers/providers'
 
 @IonicPage()
 @Component({
@@ -49,7 +50,7 @@ export class FaceEmotionRecognitionPage {
     ]
   };
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController, public api: Api) {
     this.assessment = this.generateQuestions(this.template, 6);
     this.currentQuestionStartTime = new Date();
   }
@@ -132,8 +133,9 @@ export class FaceEmotionRecognitionPage {
         "properties": this.assessmentResults
       };
       console.log(response);
+      // this.api.post('responses', response);
       this.viewCtrl.dismiss();
-      this.appCtrl.getRootNav().push('ChangingSetsPage');
+      this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
     }
   }
 

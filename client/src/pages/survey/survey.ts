@@ -129,8 +129,9 @@ export class SurveyPage {
         "properties": this.assessmentResults
       };
       console.log(response);
+      // this.api.post('responses', response);
       this.viewCtrl.dismiss();
-      this.appCtrl.getRootNav().push('FaceEmotionRecognitionPage');
+      this.appCtrl.getRootNavs()[0].push('FaceEmotionRecognitionPage');
     }
   }
 
