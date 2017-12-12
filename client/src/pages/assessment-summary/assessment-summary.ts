@@ -16,7 +16,7 @@ export class AssessmentSummaryPage {
    * @return {void} {redirect to home page}
    */
   toHomepage() {
-    this.navCtrl.popToRoot().then(this.navCtrl.parent.select(0));
+    this.navCtrl.popToRoot();
   }
 
   ionViewDidLoad() {
