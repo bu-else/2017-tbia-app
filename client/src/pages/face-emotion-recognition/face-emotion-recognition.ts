@@ -36,15 +36,15 @@ export class FaceEmotionRecognitionPage {
    */
   generateQuestions(template, count) {
     let questions = [];
+    let randq = Array.from(new Array(template.answers.length), (x, i) => i).map((a) => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map((a) => a[1]);
 
     for (var i = 1; i <= count; i++) {
-      let randint = Math.floor(Math.random() * 5);
       questions.push({
         "question_id": i,
         "question": template.question,
-        "question_img": template.answers[randint].answer_img,
+        "question_img": template.answers[randq[i]].answer_img,
         "answers": template.answers,
-        "correct_answer": template.answers[randint]
+        "correct_answer": template.answers[randq[i]]
       });
     }
     return questions;
