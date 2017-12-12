@@ -109,7 +109,7 @@ export class FaceEmotionRecognitionPage {
         }
       };
       console.log(response);
-      this.api.post('responses', response);
+      // this.api.post('responses', response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
     }

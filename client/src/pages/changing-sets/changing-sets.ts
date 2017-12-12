@@ -105,7 +105,7 @@ export class ChangingSetsPage {
         }
       };
       console.log(response);
-      this.api.post('responses', response);
+      // this.api.post('responses', response);
       this.navCtrl.popToRoot();
     }
   }
