@@ -131,7 +131,7 @@ export class SurveyPage {
         }
       };
       console.log("/responses", response);
-      this.api.post('responses', response);
+      // this.api.post('responses', response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('FaceEmotionRecognitionPage');
     }

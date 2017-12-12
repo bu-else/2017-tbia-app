@@ -40,7 +40,7 @@ export class ChangingSetsPage {
     let questions = [];
 
     questions.push({"message": true, "text": "Red = 1, Blue = 2", "red": 1, "blue": 2});
-    for (var i = 1; i <= count; i++) {
+    for (let i = 1; i <= count; i++) {
       let randq = Math.floor(Math.random() * 2) + 1;
       let randa = Math.floor(Math.random() * 2);
       questions.push({
@@ -52,11 +52,11 @@ export class ChangingSetsPage {
     }
 
     questions.push({"message": true, "text": "Red = 2, Blue = 1", "red": 2, "blue": 1});
-    for (var i = 1; i <= count; i++) {
+    for (let j = 1; j <= count; j++) {
       let randq = Math.floor(Math.random() * 2) + 1;
       let randa = Math.floor(Math.random() * 2);
       questions.push({
-        "question_id": i + count,
+        "question_id": j + count,
         "question": new_pattern.question + randq.toString(),
         "answers": [new_pattern.answers[randa], new_pattern.answers[(randa + 1) % 2]],
         "correct_answer": new_pattern.answers[randq - 1]
@@ -105,7 +105,7 @@ export class ChangingSetsPage {
         }
       };
       console.log(response);
-      this.api.post('responses', response);
+      // this.api.post('responses', response);
       this.navCtrl.popToRoot();
     }
   }
