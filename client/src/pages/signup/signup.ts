@@ -14,9 +14,11 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {
     this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.required && Validators.email],
-      password: ['', Validators.required]
+      name: [''], // validators
+      username: [''],
+      email: [''],
+      password: [''],
+      passwordConfirmed: ['']
     });
   }
 
