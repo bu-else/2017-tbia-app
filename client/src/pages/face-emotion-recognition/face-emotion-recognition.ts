@@ -24,6 +24,8 @@ export class FaceEmotionRecognitionPage {
     this.api.get('assessments').subscribe(res => {
       this.template = res["assessments"][1]["template"];
       this.assessment = this.generateQuestions(this.template, 3)
+    }, err => {
+      console.log('ERROR', err);
     });
     this.currentQuestionStartTime = new Date();
   }

@@ -25,6 +25,8 @@ export class ChangingSetsPage {
       this.template = res["assessments"][0]["template"];
       this.new_template = res["assessments"][0]["new_template"];
       this.assessment = this.generateQuestions(this.template, this.new_template, 5);
+    }, err => {
+      console.log('ERROR', err);
     });
     this.currentQuestionStartTime = new Date();
   }
