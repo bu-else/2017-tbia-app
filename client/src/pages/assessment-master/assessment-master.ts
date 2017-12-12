@@ -7,7 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'assessment-master.html',
 })
 export class AssessmentMasterPage {
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -18,7 +18,16 @@ export class AssessmentMasterPage {
     { title: 'Summary', component: 'AssessmentSummaryPage'}
   ];
 
-  startAssessment(page) {
+  /**
+   * @function {startAssessment}
+   * @return {void} {redirect to the survey page}
+   */
+  startAssessment() {
+    this.navCtrl.push('SurveyPage');
+  }
+  
+  // will be removed in production
+  start(page) {
     this.navCtrl.push(page.component);
   }
 
