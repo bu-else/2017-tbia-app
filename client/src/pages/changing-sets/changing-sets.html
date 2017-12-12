@@ -8,7 +8,8 @@
   <ion-slides pager #slides>
     <ion-slide *ngFor="let q of assessment; let i = index;">
       <div *ngIf="q.message">
-        <h2 [innerHTML]="q.text"></h2>
+        <h2 [innerHTML]="q.message"></h2>
+        <p [innerHTML]="q.text"></p>
         <div class="button-container">
           <button ion-button col-5 color="danger" class="button-height" disabled>{{q.red}}</button>
           <button ion-button col-5 color="primary" class="button-height" disabled>{{q.blue}}</button>

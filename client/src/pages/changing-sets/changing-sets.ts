@@ -39,7 +39,9 @@ export class ChangingSetsPage {
   generateQuestions(pattern, new_pattern, count) {
     let questions = [];
 
-    questions.push({"message": true, "text": "Red = 1, Blue = 2", "red": 1, "blue": 2});
+    questions.push({"message": "Red is 1, Blue is 2.",
+                    "text": "Please answer the following questions <b>correctly</b> as <b>quickly</b> as possible.",
+                    "red": 1, "blue": 2});
     for (let i = 1; i <= count; i++) {
       let randq = Math.floor(Math.random() * 2) + 1;
       let randa = Math.floor(Math.random() * 2);
@@ -51,7 +53,9 @@ export class ChangingSetsPage {
       });
     }
 
-    questions.push({"message": true, "text": "Red = 2, Blue = 1", "red": 2, "blue": 1});
+    questions.push({"message": "The pattern has changed.<br>Red is 2, Blue is 1.",
+                    "text": "Please answer the following questions <b>correctly</b> as <b>quickly</b> as possible.",
+                    "red": 2, "blue": 1});
     for (let j = 1; j <= count; j++) {
       let randq = Math.floor(Math.random() * 2) + 1;
       let randa = Math.floor(Math.random() * 2);
