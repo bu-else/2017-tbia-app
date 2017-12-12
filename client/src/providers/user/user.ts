@@ -10,8 +10,9 @@ export class User {
   constructor(public api: Api) { }
 
   /**
-   * Send a POST request to our login endpoint with the data
-   * the user entered on the form.
+   * @function {login}
+   * @param  {Object} accountInfo: any {}
+   * @return {void} {send a POST request to the login endpoint with the data the user entered on the form}
    */
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo, {
@@ -19,9 +20,8 @@ export class User {
     }).share();
 
     seq.subscribe((res: any) => {
-      console.log(res);
       this._user = res.user;
-    }, err => {
+    }, (err) => {
       console.error('ERROR', err);
     });
 
@@ -29,18 +29,19 @@ export class User {
   }
 
   /**
-   * Send a POST request to our signup endpoint with the data
-   * the user entered on the form.
+   * @function {signup}
+   * @param  {Object} accountInfo: any {}
+   * @return {void} {send a POST request to the signup endpoint with the data the user entered on the form}
    */
   signup(accountInfo: any) {
-    let seq = this.api.post('signup', accountInfo).share();
+    console.log(accountInfo);
+    let seq = this.api.post('signup', accountInfo, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    }).share();
 
     seq.subscribe((res: any) => {
-      // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
-        this._user = res.user;
-      }
-    }, err => {
+      this._user = res.user;
+    }, (err) => {
       console.error('ERROR', err);
     });
 
@@ -48,7 +49,8 @@ export class User {
   }
 
   /**
-   * Log the user out, which forgets the session
+   * @function {logout}
+   * @return {void} {Log the user out and forgets the session}
    */
   logout() {
     this._user = null;
