@@ -13,48 +13,19 @@ export class ChangingSetsPage {
    */
   
   private index = 0;
+  private template: any;
+  private new_template: any;
   private assessment: any;
   private currentQuestionStartTime: any;
   private currentQuestionEndTime: any;
   private assessmentResults = [];
 
-  private pattern = {
-    "question": "Choose ",
-    "answers": [
-      {
-        "answer_id": 1,
-        "answer": "Red",
-        "answer_num": 1,
-        "answer_color": "danger"
-      },
-      {
-        "answer_id": 2,
-        "answer": "Blue",
-        "answer_num": 2,
-        "answer_color": "primary"
-      }
-    ]
-  };
-  private new_pattern = {
-    "question": "Choose ",
-    "answers": [
-      {
-        "answer_id": 1,
-        "answer": "Red",
-        "answer_num": 2,
-        "answer_color": "danger"
-      },
-      {
-        "answer_id": 2,
-        "answer": "Blue",
-        "answer_num": 1,
-        "answer_color": "primary"
-      }
-    ]
-  };
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
-    this.assessment = this.generateQuestions(this.pattern, this.new_pattern, 5);
+    this.api.get('assessments').subscribe(res => {
+      this.template = res["assessments"][0]["template"];
+      this.new_template = res["assessments"][0]["new_template"];
+      this.assessment = this.generateQuestions(this.template, this.new_template, 5);
+    });
     this.currentQuestionStartTime = new Date();
   }
 
