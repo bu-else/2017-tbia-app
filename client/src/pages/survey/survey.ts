@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -12,17 +13,19 @@ export class SurveyPage {
    * Initialization
    */
 
-  private index = 0;
-  private survey: any;
-  private userSelection: any;
-  private userSelectionCount = 0;        /* used for multi selection */
-  private currentQuestionStartTime: any;
-  private currentQuestionEndTime: any;
-  private assessmentResults = [];
+  private index = 0;                      // the index of the slides
+  private survey: any;                    // questions fetched from the server
+  private userSelection: any;             // the answer selected for a single-selection or range question
+  private userSelectionCount = 0;         // the number of choices checked for a multi-selection question
+  private currentQuestionStartTime: any;  // start time for the current question
+  private currentQuestionEndTime: any;    // end time for the current question
+  private assessmentResults = [];         // an array of user's response to each question
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public appCtrl: App, public viewCtrl: ViewController) {
-    this.http.get('../assets/data/survey/survey.json').subscribe(res => {
-      this.survey = res;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
+    this.api.get('surveys').subscribe(res => {
+      this.survey = res["assessments"][0]["questions"];
+    }, err => {
+      console.log(err);
     })
     this.currentQuestionStartTime = new Date();
   }
@@ -63,12 +66,14 @@ export class SurveyPage {
   /**
    * @function {updateSelectionCount}
    * @param  {Object} value {the changed variable detected by ion-change event}
-   * @return {void} {update userSelectionCount for multiple choices question}
+   * @return {void} {update user selections for multiple choices question}
    */
-  updateSelectionCount(value) {
+  updateUserSelection(value, index) {
     if (value.checked) {
+      this.survey[this.index].answers[index].checked = true;
       this.userSelectionCount += 1;
     } else {
+      this.survey[this.index].answers[index].checked = false;
       this.userSelectionCount -= 1;
     }
   }
@@ -98,13 +103,16 @@ export class SurveyPage {
     if (currentQuestion.single_choice || currentQuestion.range) {
       response_user_input = this.userSelection;
     } else if (currentQuestion.multiple_choices) {
-      // 
+      response_user_input = currentQuestion.answers.reduce(function (response_user_input, choice) {
+        if (choice.checked) response_user_input.push(choice.answer);
+        return response_user_input;
+      },[]);
     }
     this.assessmentResults.push({
       "question_id": currentQuestion.question_id,
       "response_user_input": response_user_input,
-      "start_time": this.currentQuestionStartTime,
-      "end_time": this.currentQuestionEndTime
+      "start_time": this.currentQuestionStartTime.toString(),
+      "end_time": this.currentQuestionEndTime.toString()
     });
 
     // next question
@@ -116,13 +124,16 @@ export class SurveyPage {
     // next assessment
     } else {
       let response = {
-        "title": "Assessment Results",
-        "assessment": "Survey",
-        "properties": this.assessmentResults
+        "userID": "",
+        "assessment_result": {
+          "title": "Survey",
+          "properties": this.assessmentResults
+        }
       };
-      console.log(response);
+      console.log("/responses", response);
+      this.api.post('responses', response);
       this.viewCtrl.dismiss();
-      this.appCtrl.getRootNav().push('FaceEmotionRecognitionPage');
+      this.appCtrl.getRootNavs()[0].push('FaceEmotionRecognitionPage');
     }
   }
 

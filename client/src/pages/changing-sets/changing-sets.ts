@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -12,48 +13,19 @@ export class ChangingSetsPage {
    */
   
   private index = 0;
+  private template: any;
+  private new_template: any;
   private assessment: any;
   private currentQuestionStartTime: any;
   private currentQuestionEndTime: any;
   private assessmentResults = [];
 
-  private pattern = {
-    "question": "Choose ",
-    "answers": [
-      {
-        "answer_id": 1,
-        "answer": "Red",
-        "answer_num": 1,
-        "answer_color": "danger"
-      },
-      {
-        "answer_id": 2,
-        "answer": "Blue",
-        "answer_num": 2,
-        "answer_color": "primary"
-      }
-    ]
-  };
-  private new_pattern = {
-    "question": "Choose ",
-    "answers": [
-      {
-        "answer_id": 1,
-        "answer": "Red",
-        "answer_num": 2,
-        "answer_color": "danger"
-      },
-      {
-        "answer_id": 2,
-        "answer": "Blue",
-        "answer_num": 1,
-        "answer_color": "primary"
-      }
-    ]
-  };
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.assessment = this.generateQuestions(this.pattern, this.new_pattern, 5);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
+    this.api.get('assessments').subscribe(res => {
+      this.template = res["assessments"][0]["template"];
+      this.new_template = res["assessments"][0]["new_template"];
+      this.assessment = this.generateQuestions(this.template, this.new_template, 5);
+    });
     this.currentQuestionStartTime = new Date();
   }
 
@@ -107,16 +79,16 @@ export class ChangingSetsPage {
     this.currentQuestionEndTime = new Date();
     let currentQuestion = this.assessment[this.index];
     if (!currentQuestion.message) {
-      let userSelection = value;
+      let userSelection = value; // answer_id
       this.assessmentResults.push({
         "question_id": currentQuestion.question_id,
         "question": currentQuestion.question,
         "response_standardized": currentQuestion.answers,
-        "response_corroect": currentQuestion.correct_answer,
-        "response_user_input": currentQuestion.answers[userSelection],
-        "response_correctness": currentQuestion.correct_answer == userSelection,
-        "start_time": this.currentQuestionStartTime,
-        "end_time": this.currentQuestionEndTime
+        "response_correct": currentQuestion.correct_answer,
+        "response_user_input": currentQuestion.answers[userSelection - 1],
+        "response_correctness": currentQuestion.correct_answer.answer_id == userSelection,
+        "start_time": this.currentQuestionStartTime.toString(),
+        "end_time": this.currentQuestionEndTime.toString()
       });
     }
 
@@ -126,11 +98,14 @@ export class ChangingSetsPage {
       this.currentQuestionStartTime = new Date();
     } else {
       let response = {
-        "title": "Assessment Results",
-        "assessment": "Changing Sets",
-        "properties": this.assessmentResults
+        "userId": "",
+        "assessment_result": {
+          "userID": "",
+          "properties": this.assessmentResults
+        }
       };
       console.log(response);
+      this.api.post('responses', response);
       this.navCtrl.popToRoot();
     }
   }

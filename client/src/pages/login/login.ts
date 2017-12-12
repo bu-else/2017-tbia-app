@@ -22,7 +22,7 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     console.log(this.loginForm.value);
-    this.navCtrl.push('TabsPage');
+    this.navCtrl.setRoot('TabsPage');
     // this.user.login(this.account).subscribe((resp) => {
     //   this.navCtrl.push('TabsPage');
     // }, (err) => {

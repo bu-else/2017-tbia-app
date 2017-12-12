@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -12,45 +13,18 @@ export class FaceEmotionRecognitionPage {
    */
   
   private index = 0;
+  private template: any;
   private assessment: any[];
   private userSelection: any;
   private currentQuestionStartTime: any;
   private currentQuestionEndTime: any;
   private assessmentResults = [];
-
-  private template = {
-    "question": "What emotion is featured here?",
-    "answers": [
-      {
-        "answer_id": 1,
-        "answer_img": "assets/data/face-emotion-recognition/happy.jpg",
-        "answer": "Happy"
-      },
-      {
-        "answer_id": 2,
-        "answer_img": "assets/data/face-emotion-recognition/sad.jpg",
-        "answer": "Sad"
-      },
-      {
-        "answer_id": 3,
-        "answer_img": "assets/data/face-emotion-recognition/thoughtful.jpg",
-        "answer": "Thoughtful"
-      },
-      {
-        "answer_id": 4,
-        "answer_img": "assets/data/face-emotion-recognition/angry.jpg",
-        "answer": "Angry"
-      },
-      {
-        "answer_id": 5,
-        "answer_img": "assets/data/face-emotion-recognition/confused.jpg",
-        "answer": "Confused"
-      }
-    ]
-  };
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController) {
-    this.assessment = this.generateQuestions(this.template, 6);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController, public api: Api) {
+    this.api.get('assessments').subscribe(res => {
+      this.template = res["assessments"][1]["template"];
+      this.assessment = this.generateQuestions(this.template, 3)
+    });
     this.currentQuestionStartTime = new Date();
   }
 
@@ -79,6 +53,7 @@ export class FaceEmotionRecognitionPage {
   /**
    * Selection Behaviors
    */
+  
   /**
    * @function {disableNextButton}
    * @return {boolean} {if user has selected an answer or not}
@@ -111,11 +86,11 @@ export class FaceEmotionRecognitionPage {
       "question_id": currentQuestion.question_id,
       "question": currentQuestion.question,
       "response_standardized": currentQuestion.answers,
-      "response_corroect": currentQuestion.correct_answer,
-      "response_user_input": currentQuestion.answers[this.userSelection],
-      "response_correctness": currentQuestion.correct_answer == this.userSelection,
-      "start_time": this.currentQuestionStartTime,
-      "end_time": this.currentQuestionEndTime
+      "response_correct": currentQuestion.correct_answer,
+      "response_user_input": currentQuestion.answers[this.userSelection - 1],
+      "response_correctness": currentQuestion.correct_answer.answer_id == this.userSelection,
+      "start_time": this.currentQuestionStartTime.toString(),
+      "end_time": this.currentQuestionEndTime.toString()
     });
     
     // next question
@@ -127,13 +102,16 @@ export class FaceEmotionRecognitionPage {
     // next assessment
     } else {
       let response = {
-        "title": "Assessments Results",
-        "assessment": "Face Emotion Recognition",
-        "properties": this.assessmentResults
+        "userId": "",
+        "assessment_result": {
+          "title": "Face Emotion Recognition",
+          "properties": this.assessmentResults
+        }
       };
       console.log(response);
+      this.api.post('responses', response);
       this.viewCtrl.dismiss();
-      this.appCtrl.getRootNav().push('ChangingSetsPage');
+      this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
     }
   }
 

@@ -24,7 +24,7 @@ export class SignupProfilePage {
 
   submitProfile() {
     console.log(this.signupProfileForm.value);
-    this.navCtrl.push('TabsPage');
+    this.navCtrl.setRoot('TabsPage');
   }
 
   ionViewDidLoad() {
