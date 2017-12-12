@@ -125,11 +125,13 @@ export class SurveyPage {
     } else {
       let response = {
         "userID": "",
-        "assessment_result": this.assessmentResults
+        "assessment_result": {
+          "title": "Survey",
+          "properties": this.assessmentResults
+        }
       };
-      console.log(response);
-      let post = this.api.post('responses', response); // fix this
-      console.log(post);
+      console.log("/responses", response);
+      this.api.post('responses', response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('FaceEmotionRecognitionPage');
     }

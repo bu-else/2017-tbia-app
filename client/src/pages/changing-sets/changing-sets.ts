@@ -99,11 +99,13 @@ export class ChangingSetsPage {
     } else {
       let response = {
         "userId": "",
-        "assessment_result": this.assessmentResults
+        "assessment_result": {
+          "userID": "",
+          "properties": this.assessmentResults
+        }
       };
       console.log(response);
-      let post = this.api.post('responses', response); // fix this
-      console.log(post);
+      this.api.post('responses', response);
       this.navCtrl.popToRoot();
     }
   }

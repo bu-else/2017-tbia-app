@@ -103,11 +103,13 @@ export class FaceEmotionRecognitionPage {
     } else {
       let response = {
         "userId": "",
-        "assessment_result": this.assessmentResults
+        "assessment_result": {
+          "title": "Face Emotion Recognition",
+          "properties": this.assessmentResults
+        }
       };
       console.log(response);
-      let post = this.api.post('responses', response); // fix this
-      console.log(post);
+      this.api.post('responses', response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
     }
