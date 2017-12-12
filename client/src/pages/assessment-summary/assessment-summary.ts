@@ -12,10 +12,10 @@ export class AssessmentSummaryPage {
   }
 
   /**
-   * @function {homepage}
+   * @function {toHomepage}
    * @return {void} {redirect to home page}
    */
-  homepage() {
+  toHomepage() {
     this.navCtrl.popToRoot();
   }
 
