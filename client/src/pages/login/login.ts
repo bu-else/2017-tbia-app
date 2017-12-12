@@ -19,21 +19,20 @@ export class LoginPage {
     });
   }
 
-  // Attempt to login in through our User service
+  /**
+   * @function {doLogin}
+   * @return {void} {attempt to login in through the user service}
+   */
   doLogin() {
-    console.log(this.loginForm.value);
-    this.navCtrl.setRoot('TabsPage');
-    // this.user.login(this.account).subscribe((resp) => {
-    //   this.navCtrl.push('TabsPage');
-    // }, (err) => {
-    //   this.navCtrl.push('TabsPage');
-    //   // Unable to log in
-    //   let toast = this.toastCtrl.create({
-    //     message: this.loginErrorString,
-    //     duration: 3000,
-    //     position: 'top'
-    //   });
-    //   toast.present();
-    // });
+    this.user.login(this.loginForm.value).subscribe(res => {
+      this.navCtrl.setRoot('TabsPage');
+    }, err => {
+      let toast = this.toastCtrl.create({
+        message: this.loginErrorString,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present()
+    })
   }
 }
