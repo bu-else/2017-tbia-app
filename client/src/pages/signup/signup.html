@@ -8,33 +8,33 @@
   <form [formGroup]="signupForm" (ngSubmit)="doSignup()">
     <ion-list>
       <ion-item>
-        <ion-label>Name</ion-label>
+        <ion-label fixed>Name</ion-label>
         <ion-input type="text" formControlName="username"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Username</ion-label>
+        <ion-label fixed>Username</ion-label>
         <ion-input type="text" formControlName="username"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Email</ion-label>
+        <ion-label fixed>Email</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Password</ion-label>
+        <ion-label fixed>Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Confirm Password</ion-label>
+        <ion-label fixed>Confirm Password</ion-label>
         <ion-input type="password" formControlName="passwordConfirmed"></ion-input>
       </ion-item>
 
-      <ion-item [hidden]="signupForm.valid || signupForm.pristine">
+      <!-- <ion-item [hidden]="signupForm.valid || signupForm.pristine">
         <p color="danger">All fields are required.</p>
-      </ion-item>
+      </ion-item> -->
       
       <div padding>
         <button ion-button color="primary" block [disabled]="!signupForm.valid">Sign Up</button>

@@ -14,11 +14,11 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {
     this.signupForm = this.formBuilder.group({
-      name: [''], // validators
-      username: [''],
-      email: [''],
-      password: [''],
-      passwordConfirmed: ['']
+      name: [''], // "Name is not allowed to be empty"
+      username: [''], // "Username is not allowed to be empty"
+      email: [''], // "Email must be a valid email"
+      password: [''], // "Password length must be at least 8 characters long, fails to match the 1 Uppercase, 1 lowercase, 1 number pattern"
+      passwordConfirmed: [''] // "Confirm Password length must be at least 8 characters long"
     });
   }
 
