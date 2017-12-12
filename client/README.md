@@ -1,6 +1,7 @@
 # 2017-tbia-app-client
 
 ### Get Started
+To run the application, cd into `/client` and download the dependencies
 ```bash
 npm install
 ```
@@ -12,8 +13,6 @@ ionic serve
 ```
 
 ### With the Ionic CLI
-To run the application, cd into `client` and run:
-
 ```bash
 $ ionic cordova platform add ios
 $ ionic cordova run ios
@@ -25,13 +24,13 @@ Reference: [Ionic Starter Template](https://github.com/ionic-team/ionic-starter-
 
 ## Ionic Unit Testing
 #### Unit Tests
-```bash
+```
 $ npm run test
 ```
 
 #### End-to-end Tests
-To serve the app, run `ionic serve`
-```bash
+```
+$ ionic serve
 $ npm run e2e
 ```
 
