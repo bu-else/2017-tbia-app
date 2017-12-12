@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 
 @IonicPage()
@@ -20,7 +20,7 @@ export class ChangingSetsPage {
   private currentQuestionEndTime: any;
   private assessmentResults = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
     this.api.get('assessments').subscribe(res => {
       this.template = res["assessments"][0]["template"];
       this.new_template = res["assessments"][0]["new_template"];
@@ -106,7 +106,8 @@ export class ChangingSetsPage {
       };
       console.log(response);
       // this.api.post('responses', response);
-      this.navCtrl.popToRoot();
+      this.viewCtrl.dismiss();
+      this.appCtrl.getRootNavs()[0].push('AssessmentSummaryPage');
     }
   }
 

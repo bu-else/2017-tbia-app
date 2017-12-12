@@ -11,6 +11,14 @@ export class AssessmentSummaryPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  /**
+   * @function {homepage}
+   * @return {void} {redirect to home page}
+   */
+  homepage() {
+    this.navCtrl.popToRoot();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad AssessmentSummaryPage');
   }
