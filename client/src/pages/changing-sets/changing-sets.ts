@@ -21,11 +21,11 @@ export class ChangingSetsPage {
   private assessmentResults = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
-    this.api.get('assessments').subscribe(res => {
+    this.api.get('assessments').subscribe((res: any) => {
       this.template = res["assessments"][0]["template"];
       this.new_template = res["assessments"][0]["new_template"];
       this.assessment = this.generateQuestions(this.template, this.new_template, 5);
-    }, err => {
+    }, (err) => {
       console.log('ERROR', err);
     });
     this.currentQuestionStartTime = new Date();

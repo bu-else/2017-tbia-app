@@ -22,9 +22,9 @@ export class SurveyPage {
   private assessmentResults = [];         // an array of user's response to each question
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
-    this.api.get('surveys').subscribe(res => {
+    this.api.get('surveys').subscribe((res: any) => {
       this.survey = res["assessments"][0]["questions"];
-    }, err => {
+    }, (err) => {
       console.log('ERROR', err);
     })
     this.currentQuestionStartTime = new Date();
