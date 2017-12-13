@@ -8,7 +8,6 @@ export class User {
   _user: any;
   _session: any;
   _authHeader: any;
-  // _cookie: any;
 
   constructor(public api: Api) { }
 
@@ -20,7 +19,7 @@ export class User {
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      observe: "response"
+      observe: 'response'
     }).share();
 
     seq.subscribe((res: any) => {
