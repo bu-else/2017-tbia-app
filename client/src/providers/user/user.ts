@@ -6,6 +6,9 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class User {
   _user: any;
+  _session: any;
+  _authHeader: any;
+  // _cookie: any;
 
   constructor(public api: Api) { }
 
@@ -16,11 +19,14 @@ export class User {
    */
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      observe: "response"
     }).share();
 
     seq.subscribe((res: any) => {
-      this._user = res.user;
+      this._user = res.body.user;
+      this._session = res.body.session;
+      this._authHeader = res.body.authHeader;
     }, (err) => {
       console.error('ERROR', err);
     });
@@ -34,13 +40,15 @@ export class User {
    * @return {void} {send a POST request to the signup endpoint with the data the user entered on the form}
    */
   signup(accountInfo: any) {
-    console.log(accountInfo);
     let seq = this.api.post('signup', accountInfo, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      observe: "response"
     }).share();
 
     seq.subscribe((res: any) => {
-      this._user = res.user;
+      this._user = res.body.user;
+      this._session = res.body.session;
+      this._authHeader = res.body.authHeader;
     }, (err) => {
       console.error('ERROR', err);
     });
@@ -54,5 +62,7 @@ export class User {
    */
   logout() {
     this._user = null;
+    this._session = null;
+    this._authHeader = null;
   }
 }

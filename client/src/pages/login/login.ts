@@ -24,6 +24,7 @@ export class LoginPage {
    * @return {void} {attempt to login in through the user service}
    */
   doLogin() {
+    console.log(this.loginForm.value);
     this.user.login(this.loginForm.value).subscribe(res => {
       this.navCtrl.setRoot('TabsPage');
     }, err => {
