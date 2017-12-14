@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
+import { ResponsesProvider } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,7 @@ export class FaceEmotionRecognitionPage {
   private currentQuestionEndTime: any;
   private assessmentResults = [];
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController, public api: Api) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController, public api: Api, public responses: ResponsesProvider) {
     this.api.get('assessments').subscribe((res: any) => {
       this.template = res["assessments"][1]["template"];
       this.assessment = this.generateQuestions(this.template, 3)
@@ -104,14 +105,11 @@ export class FaceEmotionRecognitionPage {
     // next assessment
     } else {
       let response = {
-        "userId": "",
-        "assessment_result": {
-          "title": "Face Emotion Recognition",
-          "properties": this.assessmentResults
-        }
+        "title": "Face Emotion Recognition",
+        "properties": this.assessmentResults
       };
-      console.log(response);
-      // this.api.post('responses', response);
+      console.log("to responsesprovider", response);
+      this.responses.updateResponses(response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
     }

@@ -10,7 +10,8 @@ export class AssessmentMasterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  
+  // will be removed in production
   private assessments: any[] = [
     { title: 'Survey', component: 'SurveyPage' },
     { title: 'Face Emotion Recognition', component: 'FaceEmotionRecognitionPage' },

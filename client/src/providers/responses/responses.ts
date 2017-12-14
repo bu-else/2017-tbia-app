@@ -17,11 +17,14 @@ export class ResponsesProvider {
   constructor(public http: HttpClient, public user: User, public api: Api) {
   }
 
+  clearResponses() {
+    this.responses = [];
+  }
+
   postResponses() {
   }
 
   updateResponses(json) {
-    
+    this.responses.push(json);
   }
-
 }
