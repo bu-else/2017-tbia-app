@@ -17,9 +17,9 @@
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
 
-      <ion-item [hidden]="loginForm.valid || loginForm.pristine">
+      <!-- <ion-item [hidden]="loginForm.valid || loginForm.pristine">
         <p color="danger">All fields are required.</p>
-      </ion-item>
+      </ion-item> -->
 
       <div padding>
         <button ion-button color="primary" block [disabled]="!loginForm.valid">Sign In</button>

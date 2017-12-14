@@ -21,9 +21,11 @@ export class FaceEmotionRecognitionPage {
   private assessmentResults = [];
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController, public api: Api) {
-    this.api.get('assessments').subscribe(res => {
+    this.api.get('assessments').subscribe((res: any) => {
       this.template = res["assessments"][1]["template"];
       this.assessment = this.generateQuestions(this.template, 3)
+    }, (err) => {
+      console.log('ERROR', err);
     });
     this.currentQuestionStartTime = new Date();
   }

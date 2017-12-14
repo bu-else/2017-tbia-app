@@ -13,7 +13,7 @@ export class MyApp {
 
   pages: any[] = [
     { title: 'Profile', component: 'ProfileMasterPage' },
-    { title: 'Log Out', component: 'WelcomePage' }
+    { title: 'Log Out', component: 'LogoutPage' }
   ]
 
   constructor(platform: Platform, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
