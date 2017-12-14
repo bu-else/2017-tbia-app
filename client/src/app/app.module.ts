@@ -12,6 +12,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
+import { ResponsesProvider } from '../providers/responses/responses';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -47,7 +48,8 @@ export function createTranslateLoader(http: HttpClient) {
     SplashScreen,
     StatusBar,
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ResponsesProvider
   ]
 })
 export class AppModule { }
