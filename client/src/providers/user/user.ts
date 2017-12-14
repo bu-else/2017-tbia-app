@@ -60,8 +60,16 @@ export class User {
    * @return {void} {Log the user out and forgets the session}
    */
   logout() {
+    let seq = this.api.post('logout', {
+      headers: new HttpHeaders().set('Authorization', this._authHeader)
+    }, (err) => {
+      console.log('ERROR', err);
+    })
+    
     this._user = null;
     this._session = null;
     this._authHeader = null;
+
+    return seq;
   }
 }
