@@ -24,7 +24,7 @@ export class LoginPage {
    * @return {void} {attempt to login in through the user service}
    */
   doLogin() {
-    this.user.login(this.loginForm.value).subscribe(res => {
+    this.user.login(this.loginForm.value).subscribe((res: any) => {
       this.navCtrl.setRoot('TabsPage');
     }, err => {
       let toast = this.toastCtrl.create({

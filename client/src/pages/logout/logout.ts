@@ -10,8 +10,9 @@ import { User } from '../../providers/providers';
 export class LogoutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {
-    this.user.logout();
-    this.navCtrl.setRoot('WelcomePage');
+    this.user.logout().subscribe((res: any) => {
+      this.navCtrl.setRoot('WelcomePage');
+    });
   }
 
   ionViewDidLoad() {

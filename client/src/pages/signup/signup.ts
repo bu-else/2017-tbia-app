@@ -34,9 +34,9 @@ export class SignupPage {
       password: this.signupForm.value.password
     };
     console.log(signupAccount);
-    this.user.signup(signupAccount).subscribe(res => {
+    this.user.signup(signupAccount).subscribe((res: any) => {
       this.navCtrl.push('SignupProfilePage');
-    }, err => {
+    }, (err) => {
       let toast = this.toastCtrl.create({
         message: this.signupErrorString,
         duration: 3000,
