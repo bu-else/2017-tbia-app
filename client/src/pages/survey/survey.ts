@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Api } from '../../providers/providers';
+import { ResponsesProvider } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -21,12 +22,12 @@ export class SurveyPage {
   private currentQuestionEndTime: any;    // end time for the current question
   private assessmentResults = [];         // an array of user's response to each question
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public api: Api, public appCtrl: App, public viewCtrl: ViewController, public responses: ResponsesProvider) {
     this.api.get('surveys').subscribe((res: any) => {
       this.survey = res["assessments"][0]["questions"];
     }, (err) => {
       console.log('ERROR', err);
-    })
+    });
     this.currentQuestionStartTime = new Date();
   }
   
@@ -124,14 +125,12 @@ export class SurveyPage {
     // next assessment
     } else {
       let response = {
-        "userID": "",
-        "assessment_result": {
-          "title": "Survey",
-          "properties": this.assessmentResults
-        }
+        "title": "Survey",
+        "properties": this.assessmentResults
       };
-      console.log("/responses", response);
-      // this.api.post('responses', response);
+      this.responses.clearResponses();
+      console.log("to responseprovider", response);
+      this.responses.updateResponses(response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('FaceEmotionRecognitionPage');
     }

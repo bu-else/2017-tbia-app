@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { Api } from '../api/api';
 import { HttpHeaders } from '@angular/common/http';
 
+/**
+ * This is a User provider with stubs for login/signup/logout.
+ */
 @Injectable()
 export class User {
   _user: any;

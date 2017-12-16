@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
+import { ResponsesProvider } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -20,7 +21,7 @@ export class ChangingSetsPage {
   private currentQuestionEndTime: any;
   private assessmentResults = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public appCtrl: App, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public appCtrl: App, public viewCtrl: ViewController, public responses: ResponsesProvider) {
     this.api.get('assessments').subscribe((res: any) => {
       this.template = res["assessments"][0]["template"];
       this.new_template = res["assessments"][0]["new_template"];
@@ -104,13 +105,13 @@ export class ChangingSetsPage {
       this.currentQuestionStartTime = new Date();
     } else {
       let response = {
-        "userId": "",
-        "assessment_result": {
-          "userID": "",
-          "properties": this.assessmentResults
-        }
+        "title": "Changing Sets",
+        "properties": this.assessmentResults
       };
       console.log(response);
+      this.responses.updateResponses(response);
+      this.responses.postResponses();
+      this.responses.clearResponses();
       // this.api.post('responses', response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('AssessmentSummaryPage');
