@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
 import { Api } from '../api/api';
@@ -22,6 +22,16 @@ export class ResponsesProvider {
   }
 
   postResponses() {
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let params = new URLSearchParams();
+    params.append('userID', this.user._user._id);
+    params.append('assessment_result', JSON.stringify(this.responses));
+
+    this.api.post('responses', params.toString(), { headers: headers }).subscribe((res: any) => {
+      console.log('SUCCESS', res);
+    }, (err) => {
+      console.log('ERROR', err);
+    });
   }
 
   updateResponses(json) {
