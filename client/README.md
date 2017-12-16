@@ -5,12 +5,13 @@ To run the application, cd into `/client` and download the dependencies
 ```bash
 npm install
 ```
+In Safari, Menu > Develop > check `Disable Local File Restrictions` and `Disable Cross-Origin Restrictions`.
 
 To start a local dev server for app dev/testing
-
 ```bash
 ionic serve
 ```
+
 
 ### With the Ionic CLI
 ```bash
