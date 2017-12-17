@@ -65,13 +65,14 @@ export class User {
   logout() {
     let seq = this.api.delete('logout', {
       headers: new HttpHeaders().set('Authorization', this._authHeader)
-    }).share()
+    }).share();
     
     seq.subscribe((res: any) => {
+      console.log('SUCCESS');
     } ,(err) => {
       console.log('ERROR', err);
-    })
-
+    });
+    
     this._user = null;
     this._session = null;
     this._authHeader = null;
