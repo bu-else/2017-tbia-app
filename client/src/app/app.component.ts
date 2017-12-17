@@ -18,8 +18,6 @@ export class MyApp {
 
   constructor(platform: Platform, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
@@ -27,6 +25,5 @@ export class MyApp {
 
   openPage(page) {
     this.nav.push(page.component);
-    // this.nav.setRoot(page.component); // without back button
   }
 }
