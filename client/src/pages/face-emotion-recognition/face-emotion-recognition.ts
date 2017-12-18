@@ -70,7 +70,11 @@ export class FaceEmotionRecognitionPage {
       "response_standardized": currentQuestion.answers,
       "response_correct": currentQuestion.correct_answer,
       "response_user_input": currentQuestion.answers[value - 1],
+<<<<<<< HEAD
       "correct": currentQuestion.correct_answer.answer_id == value,
+=======
+      "response_correctness": currentQuestion.correct_answer.answer_id == value,
+>>>>>>> Use buttons for answer choices instead of radio group (#55)
       "start_time": this.currentQuestionStartTime.toString(),
       "end_time": this.currentQuestionEndTime.toString()
     });
