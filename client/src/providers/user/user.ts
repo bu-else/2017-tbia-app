@@ -87,11 +87,15 @@ export class User {
    * @return {} {Update patient info}
    */
   submitProfile(patientInfo: any) {
+<<<<<<< HEAD
     let params = {
       "userID": this._user.id,
       "patient_info": patientInfo
     }
     let seq = this.api.post('patient_info', params, {
+=======
+    let seq = this.api.post('patient_info', patientInfo, {
+>>>>>>> Update User provider to include a route for profile submission (#67)
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       observe: "response"
     }).share();
