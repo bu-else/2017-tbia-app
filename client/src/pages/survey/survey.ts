@@ -129,7 +129,6 @@ export class SurveyPage {
         "properties": this.assessmentResults
       };
       this.responses.clearResponses();
-      console.log("to responseprovider", response);
       this.responses.updateResponses(response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('FaceEmotionRecognitionPage');
