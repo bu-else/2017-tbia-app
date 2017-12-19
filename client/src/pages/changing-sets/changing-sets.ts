@@ -92,7 +92,7 @@ export class ChangingSetsPage {
         "response_standardized": currentQuestion.answers,
         "response_correct": currentQuestion.correct_answer,
         "response_user_input": currentQuestion.answers[value - 1],
-        "response_correctness": currentQuestion.correct_answer.answer_id == value,
+        "correct": currentQuestion.correct_answer.answer_id == value,
         "start_time": this.currentQuestionStartTime.toString(),
         "end_time": this.currentQuestionEndTime.toString()
       });
@@ -107,11 +107,9 @@ export class ChangingSetsPage {
         "title": "Changing Sets",
         "properties": this.assessmentResults
       };
-      console.log(response);
       this.responses.updateResponses(response);
       this.responses.postResponses();
       this.responses.clearResponses();
-      // this.api.post('responses', response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('AssessmentSummaryPage');
     }
