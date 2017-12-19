@@ -70,7 +70,7 @@ export class FaceEmotionRecognitionPage {
       "response_standardized": currentQuestion.answers,
       "response_correct": currentQuestion.correct_answer,
       "response_user_input": currentQuestion.answers[value - 1],
-      "response_correctness": currentQuestion.correct_answer.answer_id == value,
+      "correct": currentQuestion.correct_answer.answer_id == value,
       "start_time": this.currentQuestionStartTime.toString(),
       "end_time": this.currentQuestionEndTime.toString()
     });
@@ -87,7 +87,6 @@ export class FaceEmotionRecognitionPage {
         "title": "Face Emotion Recognition",
         "properties": this.assessmentResults
       };
-      console.log("to responsesprovider", response);
       this.responses.updateResponses(response);
       this.viewCtrl.dismiss();
       this.appCtrl.getRootNavs()[0].push('ChangingSetsPage');
