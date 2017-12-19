@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @IonicPage()
@@ -8,9 +8,9 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: 'signup-profile.html',
 })
 export class SignupProfilePage {
-  private signupProfileForm: FormGroup;
+  signupProfileForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
     this.signupProfileForm = formBuilder.group({
       name: ['', Validators.required],
       age: ['', Validators.required],

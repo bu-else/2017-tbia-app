@@ -9,8 +9,8 @@ import { User } from '../../providers/providers';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  private loginForm: FormGroup;
-  private loginErrorString = "Unable to sign in. Please check your account information and try again.";
+  loginForm: FormGroup;
+  loginErrorString = "Unable to sign in. Please check your account information and try again.";
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({

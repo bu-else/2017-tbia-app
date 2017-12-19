@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 
-describe('MyApp Component', () => {
+describe('MyApp', () => {
   let fixture;
   let component;
 
@@ -37,4 +37,31 @@ describe('MyApp Component', () => {
     expect(component.pages.length).toBe(2);
   });
 
+  describe('RootPage', () => {
+    it('should be welcome page', () => {
+      expect(component.rootPage).toBe('WelcomePage');
+    })
+  })
+
+  describe('Menu', () => {
+    describe('Profile', () => {
+      it('should contain a profile option', () => {
+        expect(component.pages[0].title).toBe('Profile');
+      });
+
+      it('should redirect to profile', () => {
+        expect(component.pages[0].component).toBe('ProfileMasterPage');
+      });
+    })
+
+    describe('Logout', () => {
+      it('should contain a logout option', () => {
+        expect(component.pages[1].title).toBe('Log Out');
+      });
+
+      it('should redirect to logout', () => {
+        expect(component.pages[1].component).toBe('LogoutPage');
+      })
+    })
+  })
 })

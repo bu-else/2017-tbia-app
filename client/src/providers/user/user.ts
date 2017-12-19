@@ -1,4 +1,5 @@
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/share';
 import { Injectable } from '@angular/core';
 import { Api } from '../api/api';
 import { HttpHeaders } from '@angular/common/http';
