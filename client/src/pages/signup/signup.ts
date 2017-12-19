@@ -9,8 +9,8 @@ import { User } from '../../providers/providers';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  private signupForm: FormGroup;
-  private signupErrorString = "Unable to create account. Please check your account information and try again.";
+  signupForm: FormGroup;
+  signupErrorString = "Unable to create account. Please check your account information and try again.";
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {
     this.signupForm = this.formBuilder.group({
