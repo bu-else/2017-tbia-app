@@ -7,7 +7,7 @@ import { LoginPage } from './login';
 import { Api, User } from '../../providers/providers';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
-describe('Page:', () => {
+describe('Page: Login', () => {
   let component: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
   let de: DebugElement;
@@ -51,11 +51,8 @@ describe('Page:', () => {
       expect(component.loginForm).toBeTruthy();
     })
 
-    it('should contain a username field', () => {
+    it('should contain username and password fields', () => {
       expect(component.loginForm.value.username).toBeDefined();
-    })
-
-    it('should contain a passwrod field', () => {
       expect(component.loginForm.value.password).toBeDefined();
     })
   });
