@@ -17,7 +17,7 @@ export class User {
   /**
    * @function {login}
    * @param  {Object} accountInfo: any {}
-   * @return {void} {send a POST request to the login endpoint with the data the user entered on the form}
+   * @return {} {send a POST request to the login endpoint with the data the user entered on the form}
    */
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo, {
@@ -39,7 +39,7 @@ export class User {
   /**
    * @function {signup}
    * @param  {Object} accountInfo: any {}
-   * @return {void} {send a POST request to the signup endpoint with the data the user entered on the form}
+   * @return {} {send a POST request to the signup endpoint with the data the user entered on the form}
    */
   signup(accountInfo: any) {
     let seq = this.api.post('signup', accountInfo, {
@@ -60,7 +60,7 @@ export class User {
 
   /**
    * @function {logout}
-   * @return {void} {Log the user out and forgets the session}
+   * @return {} {Log the user out and forgets the session}
    */
   logout() {
     let seq = this.api.delete('logout', {
@@ -76,6 +76,26 @@ export class User {
     this._user = null;
     this._session = null;
     this._authHeader = null;
+
+    return seq;
+  }
+
+  /**
+   * @function {updateProfile}
+   * @param {Object} PatientInfo: any {}
+   * @return {} {Update patient info}
+   */
+  submitProfile(patientInfo: any) {
+    let seq = this.api.post('patient_info', patientInfo, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      observe: "response"
+    }).share();
+
+    seq.subscribe((res: any) => {
+      console.log('SUCCESS');
+    }, (err) => {
+      console.log('ERROR', err);
+    });
 
     return seq;
   }
