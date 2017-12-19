@@ -11,7 +11,11 @@ import { User } from '../../providers/providers';
 export class SignupProfilePage {
   signupProfileForm: FormGroup;
 
+<<<<<<< HEAD
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public user: User) {
+=======
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+>>>>>>> Create a test file for signup-profile; update the page (#65)
     this.signupProfileForm = formBuilder.group({
       age: ['', Validators.required],
       gender: ['', Validators.required],
