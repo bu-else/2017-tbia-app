@@ -10,14 +10,6 @@ export class AssessmentMasterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  
-  // will be removed in production
-  private assessments: any[] = [
-    { title: 'Survey', component: 'SurveyPage' },
-    { title: 'Face Emotion Recognition', component: 'FaceEmotionRecognitionPage' },
-    { title: 'Changing Sets', component: 'ChangingSetsPage' },
-    { title: 'Summary', component: 'AssessmentSummaryPage'}
-  ];
 
   /**
    * @function {startAssessment}
@@ -25,11 +17,6 @@ export class AssessmentMasterPage {
    */
   startAssessment() {
     this.navCtrl.push('SurveyPage');
-  }
-  
-  // will be removed in production
-  start(page) {
-    this.navCtrl.push(page.component);
   }
 
   ionViewDidLoad() {
