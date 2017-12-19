@@ -46,8 +46,8 @@ describe('Page: Sign Up', () => {
     expect(component).toBeTruthy();
   });
   
-  describe('Login Form', () => {
-    it('should contain a login form', () => {
+  describe('Signup Form', () => {
+    it('should contain a signup form', () => {
       expect(component.signupForm).toBeTruthy();
     })
 
