@@ -86,7 +86,11 @@ export class User {
    * @return {} {Update patient info}
    */
   submitProfile(patientInfo: any) {
-    let seq = this.api.post('patient_info', patientInfo, {
+    let params = {
+      "userID": this._user.id,
+      "patient_info": patientInfo
+    }
+    let seq = this.api.post('patient_info', params, {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       observe: "response"
     }).share();
