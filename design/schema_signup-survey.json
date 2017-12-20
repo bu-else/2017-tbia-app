@@ -1,7 +1,4 @@
 // Defining the JSON Schema for the results of the initial survey of the user
-// Notes:
-// - 
-
 
 {
     "title": "Initial Survey Results",
