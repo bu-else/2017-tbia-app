@@ -1,6 +1,4 @@
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { SignupPage } from './signup';
@@ -10,9 +8,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 describe('Page: Sign Up', () => {
   let component: SignupPage;
   let fixture: ComponentFixture<SignupPage>;
-  let de: DebugElement;
-  let el: HTMLElement;
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MyApp, SignupPage],
@@ -37,8 +33,6 @@ describe('Page: Sign Up', () => {
   afterEach(() => {
     fixture.destroy();
     component = null;
-    de = null;
-    el = null;
   });
   
   it('should be created', () => {
