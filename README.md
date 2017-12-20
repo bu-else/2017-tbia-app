@@ -43,7 +43,7 @@ Here're the built-in features comes with Anchor.
 
 ## Installation
 ```
-git clone git@github.com:bu-else/2017-tbia-app.git
+git clone --recursive git@github.com:bu-else/2017-tbia-app.git
 ```
 
 - [Back-end Deployment Instructions](https://github.com/bu-else/2017-tbia-app/blob/Develop/back-end/README.md)

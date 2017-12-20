@@ -7,11 +7,7 @@
 - [Development Notes](#development-notes)
 
 ## Installation
-__DEVELOPMENT NOTE__: We're maintaining a fork of Anchor in `bu-else/2017-tbia-anchor` and using it as a submodule here. To update the submodule after cloning the repository, run
-```
-$ cd back-end
-$ git submodule update --init --recursive
-```
+__DEVELOPMENT NOTE__: We're maintaining a fork of Anchor in `bu-else/2017-tbia-anchor` and using it as a submodule here.
 
 To install dependencies for anchor, run
 ```
