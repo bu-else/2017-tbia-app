@@ -13,6 +13,14 @@ $ cd client
 $ npm install
 ```
 
+## Configuration
+Simply edit the following line in `/config/env.ts` file to reflect `development` and `production`.
+```javascript
+public static currentEnvironment: string = "development";
+public static currentEnvironment: string = "production";
+```
+Ionic app will run against local server in `development` and MOC server in `production`.
+
 ## Running the app
 In Safari, go to `Menu > Develop` and check `Disable Local File Restrictions` and `Disable Cross-Origin Restrictions` fields.
 
