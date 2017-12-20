@@ -4,16 +4,16 @@ Cross-platform mobile application for preliminary assessment of head trauma.
 [![Build Status](https://travis-ci.org/bu-else/2017-tbia-app.svg?branch=Develop)](https://travis-ci.org/bu-else/2017-tbia-app)
 
 ## Features
-##### Mobile App
+#### Mobile App
 - Login or signup (for first-time users)
 - Patients can update their profile after signing up for an account
 - Patients can view their profile
 - Patients can take an examination containing a demographic survey and a battery of assessments
-- Patients can view summary after taking an exmination
+- Patients can view summary after taking an examination
 - Assessment results will be sent to and stored on the server
 - Logout
 
-##### Back-end
+#### Back-end
 Here're the built-in features comes with Anchor.
 - Login system with forgot password and reset password
 - Abusive login attempt detection
