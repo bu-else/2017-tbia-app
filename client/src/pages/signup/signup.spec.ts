@@ -50,7 +50,7 @@ describe('Page: Sign Up', () => {
       expect(component.signupForm.value.username).toBeDefined();
       expect(component.signupForm.value.email).toBeDefined();
       expect(component.signupForm.value.password).toBeDefined();
-      expect(component.signupForm.value.passwordConfirmed).toBeDefined();
+      expect(component.signupForm.value.confirmPassword).toBeDefined();
     })
   });
 })
