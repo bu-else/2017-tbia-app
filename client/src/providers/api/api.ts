@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EnvironmentProvider } from '../environment/environment';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -8,8 +9,8 @@ import { Injectable } from '@angular/core';
 export class Api {
   url: string;
 
-  constructor(public http: HttpClient) {
-    this.url = 'http://localhost:9000';
+  constructor(public http: HttpClient, public env: EnvironmentProvider) {
+    this.url = this.env.getApiUrl();
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
