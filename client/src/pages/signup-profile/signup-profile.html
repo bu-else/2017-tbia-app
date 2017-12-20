@@ -61,7 +61,7 @@
     </ion-list>
 
     <ion-item [hidden]="signupProfileForm.valid || signupProfileForm.pristine">
-      <p color="danger">General and Current Head Injury are required.</p>
+      <p color="danger">General and Current Head Injury fields are not allowed to be empty</p>
     </ion-item>
     
     <button padding ion-button block [disabled]="!signupProfileForm.valid">Submit</button>
