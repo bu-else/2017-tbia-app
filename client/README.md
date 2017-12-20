@@ -32,7 +32,7 @@ To setup an emulator, follow the guides
 - [iOS Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)
 - [Android Platform Guide](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)
 
-![ios-simulator-example]()
+![ios-simulator-example](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/ios-emulator-example.jpeg)
 
 ## Running tests
 We follow the [Ionic Unit Testing Example](https://github.com/ionic-team/ionic-unit-testing-example) to write all of our front-end tests. The tests can be found in ```src/app/*.spec.ts``` and ```e2e/*.e2e-spec.ts``` files.
