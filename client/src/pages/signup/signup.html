@@ -8,34 +8,45 @@
   <form [formGroup]="signupForm" (ngSubmit)="doSignup()">
     <ion-list>
       <ion-item>
-        <ion-label fixed>Name</ion-label>
+        <ion-label>Name</ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
+      <div [hidden]="signupForm.controls.name.valid || signupForm.controls.name.pristine">
+        {{signupFormErrorMessage.invalidName}}
+      </div>
 
       <ion-item>
-        <ion-label fixed>Username</ion-label>
+        <ion-label>Username</ion-label>
         <ion-input type="text" formControlName="username"></ion-input>
       </ion-item>
+      <div [hidden]="signupForm.controls.username.valid || signupForm.controls.username.pristine">
+        {{signupFormErrorMessage.invalidUsername}}
+      </div>
 
       <ion-item>
-        <ion-label fixed>Email</ion-label>
+        <ion-label>Email</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
+      <div [hidden]="signupForm.controls.email.valid || signupForm.controls.email.pristine">
+        {{signupFormErrorMessage.invalidEmail}}
+      </div>
 
       <ion-item>
-        <ion-label fixed>Password</ion-label>
+        <ion-label>Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
+      <div [hidden]="signupForm.controls.password.valid || signupForm.controls.password.pristine">
+        {{signupFormErrorMessage.invalidPassword}}
+      </div>
 
       <ion-item>
-        <ion-label fixed>Confirm Password</ion-label>
-        <ion-input type="password" formControlName="passwordConfirmed"></ion-input>
+        <ion-label>Confirm Password</ion-label>
+        <ion-input type="password" formControlName="confirmPassword"></ion-input>
       </ion-item>
+      <div [hidden]="signupForm.controls.confirmPassword.valid || signupForm.controls.confirmPassword.pristine">
+        {{signupFormErrorMessage.invalidPasswordConfirmed}}
+      </div>
 
-      <!-- <ion-item [hidden]="signupForm.valid || signupForm.pristine">
-        <p color="danger">All fields are required.</p>
-      </ion-item> -->
-      
       <div padding>
         <button ion-button color="primary" block [disabled]="!signupForm.valid">Sign Up</button>
       </div>

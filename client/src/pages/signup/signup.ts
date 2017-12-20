@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { User } from '../../providers/providers';
 
 @IonicPage()
@@ -9,16 +9,26 @@ import { User } from '../../providers/providers';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
+  /**
+   * Initialization
+   */
   signupForm: FormGroup;
+  signupFormErrorMessage: any = {
+    "invalidName": "Name is not allowed to be empty",
+    "invalidUsername": "Username is not allowed to be empty",
+    "invalidEmail": "Email must be a valid email",
+    "invalidPassword": "Password must contain at least 8 characters, including at least 1 uppercase, 1 lowercase and 1 number",
+    "invalidPasswordConfirmed": "Password is not allowed to be empty",
+  };
   signupErrorString = "Unable to create account. Please check your account information and try again.";
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {
     this.signupForm = this.formBuilder.group({
-      name: [''], // "Name is not allowed to be empty"
-      username: [''], // "Username is not allowed to be empty"
-      email: [''], // "Email must be a valid email"
-      password: [''], // "Password length must be at least 8 characters long, fails to match the 1 Uppercase, 1 lowercase, 1 number pattern"
-      passwordConfirmed: [''] // "Confirm Password length must be at least 8 characters long"
+      name: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', Validators.compose([Validators.email, Validators.required])],
+      password: ['', Validators.compose([Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/), Validators.required])],
+      confirmPassword: ['', Validators.required]
     });
   }
 
@@ -33,7 +43,6 @@ export class SignupPage {
       email: this.signupForm.value.email,
       password: this.signupForm.value.password
     };
-    console.log(signupAccount);
     this.user.signup(signupAccount).subscribe((res: any) => {
       this.navCtrl.push('SignupProfilePage');
     }, (err) => {
