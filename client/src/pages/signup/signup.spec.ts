@@ -2,7 +2,7 @@ import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { SignupPage } from './signup';
-import { Api, User } from '../../providers/providers';
+import { Api, User, EnvironmentProvider } from '../../providers/providers';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('Page: Sign Up', () => {
@@ -16,6 +16,7 @@ describe('Page: Sign Up', () => {
         NavController,
         Api,
         User,
+        EnvironmentProvider,
         HttpClient,
         HttpHandler
       ],
