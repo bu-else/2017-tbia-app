@@ -6,11 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
 import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 import { ResponsesProvider } from '../providers/responses/responses';
+import { EnvironmentProvider } from '../providers/environment/environment';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { ResponsesProvider } from '../providers/responses/responses';
     SplashScreen,
     StatusBar,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ResponsesProvider
+    ResponsesProvider,
+    EnvironmentProvider
   ]
 })
 export class AppModule { }
