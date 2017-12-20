@@ -32,7 +32,6 @@ import { ResponsesProvider } from '../providers/responses/responses';
     Camera,
     SplashScreen,
     StatusBar,
-    // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ResponsesProvider
   ]

@@ -10,6 +10,10 @@ import { User } from '../../providers/providers';
 })
 export class LoginPage {
   loginForm: FormGroup;
+  loginFormErrorMessage: any = {
+    "invalidUsername": "Username is not allowed to be empty",
+    "invalidPassword": "Password is not allowed to be empty"
+  }
   loginErrorString = "Unable to sign in. Please check your account information and try again.";
 
   constructor(public navCtrl: NavController, public user: User, public toastCtrl: ToastController, private formBuilder: FormBuilder) {

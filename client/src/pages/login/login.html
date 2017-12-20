@@ -11,16 +11,18 @@
         <ion-label fixed>Username</ion-label>
         <ion-input type="text" formControlName="username"></ion-input>
       </ion-item>
+      <p class="alert" [hidden]="loginForm.controls.username.valid || loginForm.controls.username.pristine">
+        {{loginFormErrorMessage.invalidUsername}}
+      </p>
 
       <ion-item>
         <ion-label fixed>Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-
-      <!-- <ion-item [hidden]="loginForm.valid || loginForm.pristine">
-        <p color="danger">All fields are required.</p>
-      </ion-item> -->
-
+      <p class="alert" [hidden]="loginForm.controls.password.valid || loginForm.controls.password.pristine">
+        {{loginFormErrorMessage.invalidPassword}}
+      </p>
+      
       <div padding>
         <button ion-button color="primary" block [disabled]="!loginForm.valid">Sign In</button>
       </div>
