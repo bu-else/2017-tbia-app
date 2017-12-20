@@ -3,6 +3,11 @@ Cross-platform mobile application for preliminary assessment of head trauma.
 
 [![Build Status](https://travis-ci.org/bu-else/2017-tbia-app.svg?branch=Develop)](https://travis-ci.org/bu-else/2017-tbia-app)
 
+Traumatic Brain Injury is one of the leading causes of military morbidity and mortality.  In addition, TBI associated with motor vehicle collisions and sports injuries are increasingly being recognized.  There are a few coach-sponsored or health care provider Apps which can help with concussion detection.  To date, there is no user-specific App for the assessment and monitoring of TBI and concussion.
+
+This App will allow the individual to take a baseline test and then compare function in several domains, in real time, in a longitudinal fashion to assess hour to hour, day to day, or month to month improvements or changes.
+
+
 ## Features
 #### Mobile App
 - Login or signup (for first-time users)
