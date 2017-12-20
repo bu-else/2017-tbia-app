@@ -55,7 +55,6 @@ export class ResponsesProvider {
   }
 
   evaluation() {
-    console.log(this.responses);
     let assessment_responses = this.responses.reduce(function(assessment_responses, response) {
       if (response.title != "Survey") {
         assessment_responses.push(response.properties);
