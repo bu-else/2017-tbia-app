@@ -46,5 +46,5 @@ Here're the built-in features comes with Anchor.
 git clone git@github.com:bu-else/2017-tbia-app.git
 ```
 
-- [Back-end Deployment Instructions]()
-- [Front-end Compilation Instructions](https://github.com/bu-else/2017-tbia-app/blob/feature-documentation-44/client/README.md)
+- [Back-end Deployment Instructions](https://github.com/bu-else/2017-tbia-app/blob/Develop/back-end/README.md)
+- [Front-end Compilation Instructions](https://github.com/bu-else/2017-tbia-app/blob/Develop/client/README.md)
