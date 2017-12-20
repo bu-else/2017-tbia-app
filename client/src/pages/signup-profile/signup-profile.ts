@@ -13,7 +13,6 @@ export class SignupProfilePage {
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public user: User) {
     this.signupProfileForm = formBuilder.group({
-      name: ['', Validators.required],
       age: ['', Validators.required],
       gender: ['', Validators.required],
       currentInjuryDate: ['', Validators.required],

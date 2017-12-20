@@ -45,8 +45,7 @@ describe('Page: Sign Up (Profile)', () => {
       expect(component.signupProfileForm).toBeTruthy();
     })
     
-    it('should contain name, age and gender fields', () => {
-      expect(component.signupProfileForm.value.name).toBeDefined();
+    it('should contain age and gender fields', () => {
       expect(component.signupProfileForm.value.age).toBeDefined();
       expect(component.signupProfileForm.value.gender).toBeDefined();
     })
