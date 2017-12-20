@@ -51,7 +51,7 @@
         },
 
         "start-time": { "type": "string" }, // footnote 2
-        "end-time": { "type": "string" },
+        "end-time": { "type": "string" }
 
     },
     "required": []

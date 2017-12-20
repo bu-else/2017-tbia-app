@@ -1,4 +1,4 @@
-#Use Case I
+# Use Case I
 Mobile App for Traumatic Brain Injury Assessment
 
 * Brief Description
