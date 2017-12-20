@@ -43,9 +43,3 @@ git clone git@github.com:bu-else/2017-tbia-app.git
 
 - [Back-end Deployment Instructions]()
 - [Front-end Compilation Instructions](https://github.com/bu-else/2017-tbia-app/blob/feature-documentation-44/client/README.md)
-
-## Running the app
-
-## Running in production
-
-## Running tests

@@ -6,7 +6,7 @@
 - [Reference](#reference)
 
 ## Installation
-In Safari, Menu > Develop > check `Disable Local File Restrictions` and `Disable Cross-Origin Restrictions`.
+In Safari, go to `Menu > Develop` and check `Disable Local File Restrictions` and `Disable Cross-Origin Restrictions` fields.
 
 To run the application, cd into `/client` folder and download the dependencies
 ```
