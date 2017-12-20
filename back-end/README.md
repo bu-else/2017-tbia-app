@@ -37,7 +37,8 @@ $ cd 2017-tbia-anchor
 $ npm start
 ```
 
-## Deployment on MOC
+## Deployment on MOC Ubuntu Instance
+The instructions are the same for running the on Ubuntu as they appear above. In security group settings, port 9000 (by default) must be made open. 
 
 ## Development notes
 * bcrypt is experimentally being swapped out for bcryptjs, using the instructions at:<br>
