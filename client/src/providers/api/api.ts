@@ -6,10 +6,15 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  // url: string = 'http://128.31.25.58:9000';
-  url: string = 'http://localhost:9000';
+  url: string;
 
   constructor(public http: HttpClient) {
+    console.log(process.env.IONIC_ENV)
+    if (process.env.IONIC_ENV === 'prod') {
+      this.url = 'http://128.31.25.58:9000';
+    } else {
+      this.url = 'http://localhost:9000';
+    }
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
