@@ -10,6 +10,7 @@ import { User } from '../../providers/providers';
 })
 export class SignupProfilePage {
   signupProfileForm: FormGroup;
+
   SignupProfileErrorString: string = "Unable to submit profile. Please check your patient information and try again."
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public user: User, public toastCtrl: ToastController) {
