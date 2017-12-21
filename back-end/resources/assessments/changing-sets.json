@@ -1,0 +1,37 @@
+{
+    "title": "Changing Sets",
+    "template": {
+        "question": "Choose ",
+        "answers": [
+            {
+                "answer_id": 1,
+                "answer": "Red",
+                "answer_num": 1,
+                "answer_color": "danger"
+            },
+            {
+                "answer_id": 2,
+                "answer": "Blue",
+                "answer_num": 2,
+                "answer_color": "primary"
+            }
+        ]
+    },
+    "new_template": {
+        "question": "Choose ",
+        "answers": [
+            {
+                "answer_id": 1,
+                "answer": "Red",
+                "answer_num": 2,
+                "answer_color": "danger"
+            },
+            {
+                "answer_id": 2,
+                "answer": "Blue",
+                "answer_num": 1,
+                "answer_color": "primary"
+            }
+        ]
+    }
+}

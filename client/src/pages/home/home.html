@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content center text-center padding>
+  <h2 class="home-title">Welcome to the TBI App!</h2>
+  <p>This App will allow the individual to take a baseline test and then compare function in several domains, in real time, in a longitudinal fashion to assess hour to hour, day to day, or month to month improvements or changes.</p>
+
+  <button ion-button icon-end large clear (click)="toAssessmentTab()">
+    View Assessments
+    <ion-icon name="arrow-forward"></ion-icon>
+  </button>
+</ion-content>

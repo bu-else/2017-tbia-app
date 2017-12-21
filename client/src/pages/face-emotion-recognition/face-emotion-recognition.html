@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Assessment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding scroll="false">
+  <ion-slides pager #slides>
+    <ion-slide *ngFor="let q of assessment">
+      <ion-card class="square">
+        <img src="{{q.question_img}}"/>
+      </ion-card>
+
+      <h4 [innerHTML]="q.question"></h4>
+      <ion-buttons>
+        <button ion-button outline large *ngFor="let a of q.answers" (click)="submit(a.answer_id)">
+          {{a.answer}}
+        </button>
+      </ion-buttons>
+      
+    </ion-slide>
+  </ion-slides>
+</ion-content>

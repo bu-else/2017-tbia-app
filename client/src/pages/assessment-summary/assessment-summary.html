@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Summary</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        Assessment Summary
+      </ion-card-title>
+      <p>
+        {{summary.date}}
+      </p>
+    </ion-card-content>
+
+    <div center text-center>
+      <h2 class="summary-title">{{summary.correct}} Out of {{summary.total}}</h2>
+      <h1 class="summary-percentage">{{summary.percentage}}%</h1>
+    </div>
+
+    <ion-item>
+    <ion-icon name='clipboard' item-start color="primary"></ion-icon>
+      Total
+      <ion-badge item-end>{{summary.total}}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='checkbox' item-start color="primary"></ion-icon>
+      Correct
+      <ion-badge item-end>{{summary.correct}}</ion-badge>
+    </ion-item>
+  </ion-card>
+  
+  <div padding>
+    <button ion-button block (click)="toHomepage()">Home Page</button>
+  </div>
+</ion-content>

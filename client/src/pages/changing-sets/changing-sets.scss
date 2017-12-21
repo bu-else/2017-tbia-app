@@ -1,0 +1,24 @@
+page-changing-sets {
+    .button-container {
+        padding: 1em 0;
+    }
+
+    .button-height {
+        height: 30vh;
+    }
+    
+    .button-container button[disabled] {
+        opacity: 1 !important;
+    } 
+
+    p {
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #60646B;
+
+        b {
+        color: #000000;
+        }
+    }
+}

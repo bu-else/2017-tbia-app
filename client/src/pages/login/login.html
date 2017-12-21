@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sign In</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Username</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <p class="alert" [hidden]="loginForm.controls.username.valid || loginForm.controls.username.pristine">
+        {{loginFormErrorMessage.invalidUsername}}
+      </p>
+
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p class="alert" [hidden]="loginForm.controls.password.valid || loginForm.controls.password.pristine">
+        {{loginFormErrorMessage.invalidPassword}}
+      </p>
+      
+      <div padding>
+        <button ion-button color="primary" block [disabled]="!loginForm.valid">Sign In</button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

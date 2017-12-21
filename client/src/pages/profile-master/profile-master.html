@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>General</ion-list-header>
+    <ion-item>
+      Age
+      <ion-note item-end>{{profile.age}}</ion-note>
+    </ion-item>
+    <ion-item>
+      Gender
+      <ion-note item-end>{{profile.gender}}</ion-note>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>Current Head Injury</ion-list-header>
+    <ion-item>
+      Time
+      <ion-note item-end>{{profile.currentInjuryDate}}</ion-note>
+    </ion-item>
+    <ion-item>
+      Medical Problems
+      <ion-note item-end>{{profile.currentInjuryMedicalProblems}}</ion-note>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>Prior Head Injury</ion-list-header>
+    <ion-item>
+      Time
+      <ion-note item-end>{{profile.priorInjuryDate}}</ion-note>
+    </ion-item>
+    <ion-item>
+      Medical Problems
+      <ion-note item-end>{{profile.priorInjuryMedicalProblems}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

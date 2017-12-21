@@ -1,4 +1,4 @@
-#Non-functional requirements
+# Non-functional requirements
 Mobile App for Traumatic Brain Injury Assessment
 
 * Logging

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Assessment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager #slides>
+    <ion-slide *ngFor="let q of assessment; let i = index;">
+      <div *ngIf="q.message">
+        <h2 [innerHTML]="q.message"></h2>
+        <p [innerHTML]="q.text"></p>
+        <div class="button-container">
+          <button ion-button col-5 color="danger" class="button-height" disabled>{{q.red}}</button>
+          <button ion-button col-5 color="primary" class="button-height" disabled>{{q.blue}}</button>
+        </div>
+        <button ion-button outline block (click)="submit()">Next</button>
+      </div>
+
+      <div *ngIf="!q.message">
+        <h2 [innerHTML]="q.question"></h2>
+        <div class="button-container">
+          <button *ngFor="let a of q.answers; let i = index;"
+                  ion-button col-5 color="{{a.answer_color}}" class="button-height" (click)="submit(a.answer_id)">
+          </button>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

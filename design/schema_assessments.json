@@ -1,0 +1,69 @@
+// Defining the JSON Schema for the results of the assessment
+// Notes:
+// - individual array indices will need to be determined and documented on 
+//   a per-assessment basis
+// - format hierarchy: 
+//      Assessment
+//          Component
+//              Question
+
+{
+    "title": "Assessment Results",
+    "description": "Standard format for reporting assessment results",
+    "type": "object",
+    "properties": {
+        "userID": {
+            "description": "The unique id for the user",
+            "type": "integer"
+        },
+        "sessionID": {
+            "description": "The unique id for the session",
+            "type": "integer"
+        },
+        "deviceID": {
+            "description": "The unique id for the device",
+            "type": "integer"
+        },
+        "responses_user_input": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "responses_standardized": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+        "time_intervals": {
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+
+        "errors_per_question": { // footnote 1
+            "type": "array",
+            "items": {
+                "type": "integer"
+            }
+        },
+
+        "start-time": { "type": "string" }, // footnote 2
+        "end-time": { "type": "string" }
+
+    },
+    "required": []
+
+}
+
+// Footnotes
+// 1
+// Each array index will represent a single question of one part of an assessment
+// Ex. how many errors per tab in color/num recog. 
+// Array len will be assessment component count * questions per component
+// 
+// 2
+// timestamps will be of a standardized, predetermined format to expedite parsing 
+//

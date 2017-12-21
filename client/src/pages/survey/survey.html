@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Survey</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding scroll="true">
+  <ion-slides pager #slides style="height: auto">
+    <ion-slide *ngFor="let s of survey">
+      <h3 class="survey-title">{{s.question_id}}. {{s.question}}</h3>
+
+      <div *ngIf="s.single_choice">
+        <ion-list no-lines radio-group (ionChange)="select($event)">
+          <ion-item *ngFor="let a of s.answers">
+            <ion-label>{{a.answer}}</ion-label>
+            <ion-radio value="{{a.answer}}"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </div>
+      
+      <div *ngIf="s.multiple_choices">
+        <ion-list no-lines>
+          <ion-item *ngFor="let a of s.answers; let i = index">
+            <ion-label>{{a.answer}}</ion-label>
+            <ion-checkbox (ionChange)="updateUserSelection($event, i)"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngIf="s.range">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-range min="{{s.answers.min}}" max="{{s.answers.max}}" step="{{s.answers.step}}" snaps="true" pin="true" (ionChange)="updateRange($event)">
+              <ion-label range-left>{{s.answers.min}}</ion-label>
+              <ion-label range-right>{{s.answers.max}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <button ion-button outline block (click)="submit()" [disabled]="disableNextButton()" class="survey-button">Next</button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

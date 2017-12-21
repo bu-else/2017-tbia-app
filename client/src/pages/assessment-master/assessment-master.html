@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Assessment</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding center text-center>
+  <h2 class="assessment-title">Welcome to the TBI App!</h2>
+  <p>An Individual would complete a symptom questionnaire followed by a battery of assessment questions.<br/>
+    <b>Your result will not be stored and evaluated until you complete the assessment.</b>
+  </p>
+  <p>You can now begin your assessment.</p>
+  
+  <button ion-button block (click)="startAssessment()">Start</button>
+  <button ion-button block outline *ngFor="let a of assessments" (click)="start(a)">
+    {{a.title}}
+  </button>
+</ion-content>

@@ -1,0 +1,17 @@
+page-face-emotion-recognition {
+
+    ion-card.square {
+        margin: auto;
+        object-fit: cover;
+        width: 32vh;
+        height: 32vh;
+        img {
+            max-height: none;
+            position: relative;
+        }
+    }
+
+    ion-list {
+        margin: 0 !important;
+    }
+}
