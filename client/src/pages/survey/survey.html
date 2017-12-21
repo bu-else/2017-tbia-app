@@ -4,10 +4,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-slides pager #slides>
+<ion-content padding scroll="true">
+  <ion-slides pager #slides style="height: auto">
     <ion-slide *ngFor="let s of survey">
-      <h3>{{s.question_id}}. {{s.question}}</h3>
+      <h3 class="survey-title">{{s.question_id}}. {{s.question}}</h3>
 
       <div *ngIf="s.single_choice">
         <ion-list no-lines radio-group (ionChange)="select($event)">
@@ -38,7 +38,7 @@
         </ion-list>
       </div>
 
-      <button ion-button outline block (click)="submit()" [disabled]="disableNextButton()">Next</button>
+      <button ion-button outline block (click)="submit()" [disabled]="disableNextButton()" class="survey-button">Next</button>
     </ion-slide>
   </ion-slides>
 </ion-content>
