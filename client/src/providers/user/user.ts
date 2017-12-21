@@ -82,11 +82,11 @@ export class User {
   }
 
   /**
-   * @function {updateProfile}
-   * @param {Object} PatientInfo: any {}
-   * @return {} {Update patient info}
+   * @function {updatePatientInfo}
+   * @param {Object} PatientInfo: any {the signup profile form}
+   * @return {} {update patient information}
    */
-  submitProfile(patientInfo: any) {
+  updatePatientInfo(patientInfo: any) {
     let profile = {
       "userID": this._user._id,
       "patient_info": patientInfo
@@ -98,5 +98,18 @@ export class User {
 
     let seq = this.api.post('update_patient_info', params.toString(), { headers: headers }).share();
     return seq;
+  }
+
+  /**
+   * @function {getPatientInfo}
+   * @return {type} {get patient information}
+   */
+  getPatientInfo() {
+    let params = { "userID": this._user._id }
+    let seq = this.api.post('patient_info', params, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    }).share();
+
+    return seq
   }
 }

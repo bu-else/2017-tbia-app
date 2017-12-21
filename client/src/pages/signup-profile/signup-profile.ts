@@ -28,7 +28,7 @@ export class SignupProfilePage {
    * @return {} {submit patient info to the backend}
    */
   submitProfile() {
-    this.user.submitProfile(this.signupProfileForm.value).subscribe((res: any) => {
+    this.user.updatePatientInfo(this.signupProfileForm.value).subscribe((res: any) => {
       this.navCtrl.setRoot('TabsPage');
     }, (err) => {
       let toast = this.toastCtrl.create({
