@@ -1,7 +1,7 @@
 # 2017-tbia-app
 Cross-platform mobile application for preliminary assessment of head trauma.
 
-[![Build Status](https://travis-ci.org/bu-else/2017-tbia-app.svg?branch=Develop)](https://travis-ci.org/bu-else/2017-tbia-app)
+[![Build Status](https://travis-ci.org/bu-else/2017-tbia-app.svg?branch=master)](https://travis-ci.org/bu-else/2017-tbia-app)
 
 Traumatic Brain Injury is one of the leading causes of military morbidity and mortality.  In addition, TBI associated with motor vehicle collisions and sports injuries are increasingly being recognized.  There are a few coach-sponsored or health care provider Apps which can help with concussion detection.  To date, there is no user-specific App for the assessment and monitoring of TBI and concussion.
 
@@ -46,22 +46,22 @@ Here're the built-in features comes with Anchor.
 git clone --recursive git@github.com:bu-else/2017-tbia-app.git
 ```
 
-- [Back-end Deployment Instructions](https://github.com/bu-else/2017-tbia-app/blob/Develop/back-end/README.md)
-- [Front-end Compilation Instructions](https://github.com/bu-else/2017-tbia-app/blob/Develop/client/README.md)
+- [Back-end Deployment Instructions](https://github.com/bu-else/2017-tbia-app/blob/master/back-end/README.md)
+- [Front-end Compilation Instructions](https://github.com/bu-else/2017-tbia-app/blob/master/client/README.md)
 
 ## Demo
 Here's a demo of basic flow: `Welcome page` > `Login or Signup` > `Submit patient information` > `Home Page` > `View Profile` > `Start Assessment` > `View Summary`
 
-![1-welcome](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/1-welcome.png)
+![1-welcome](https://github.com/bu-else/2017-tbia-app/blob/master/demo/1-welcome.png)
 
-![2-signup](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/2-signup.png)
+![2-signup](https://github.com/bu-else/2017-tbia-app/blob/master/demo/2-signup.png)
 
-![3-patient-info](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/3-patient-info.png)
+![3-patient-info](https://github.com/bu-else/2017-tbia-app/blob/master/demo/3-patient-info.png)
 
-![4-home](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/4-home.png)
+![4-home](https://github.com/bu-else/2017-tbia-app/blob/master/demo/4-home.png)
 
-![5-profile](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/5-profile.png)
+![5-profile](https://github.com/bu-else/2017-tbia-app/blob/master/demo/5-profile.png)
 
-![6-assessment](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/6-assessment.png)
+![6-assessment](https://github.com/bu-else/2017-tbia-app/blob/master/demo/6-assessment.png)
 
-![7-summary](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/7-summary.png)
+![7-summary](https://github.com/bu-else/2017-tbia-app/blob/master/demo/7-summary.png)
