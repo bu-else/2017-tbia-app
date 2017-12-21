@@ -56,12 +56,12 @@ Here's a demo of basic flow: `Welcome page` > `Login or Signup` > `Submit patien
 
 ![2-signup](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/1-signup.png)
 
-![3-patient-info](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/3-patient-info.png)]
+![3-patient-info](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/3-patient-info.png)
 
-![4-home](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/4-home.png)]
+![4-home](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/4-home.png)
 
-![5-assessment](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/5-assessment.png)]
+![5-assessment](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/5-assessment.png)
 
-![6-profile](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/6-profile.png)]
+![6-profile](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/6-profile.png)
 
-![7-summary](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/7-summary.png)]
+![7-summary](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/7-summary.png)
