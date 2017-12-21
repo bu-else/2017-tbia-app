@@ -87,21 +87,12 @@ export class User {
    * @return {} {Update patient info}
    */
   submitProfile(patientInfo: any) {
-    let params = {
-      "userID": this._user.id,
-      "patient_info": patientInfo
-    }
-    let seq = this.api.post('patient_info', params, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      observe: "response"
-    }).share();
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let params = new URLSearchParams();
+    params.append('userID', this._user._id);
+    params.append('patient_info', JSON.stringify(patientInfo));
 
-    seq.subscribe((res: any) => {
-      console.log('SUCCESS');
-    }, (err) => {
-      console.log('ERROR', err);
-    });
-
+    let seq = this.api.post('update_patient_info', params.toString(), { headers: headers }).share();
     return seq;
   }
 }
