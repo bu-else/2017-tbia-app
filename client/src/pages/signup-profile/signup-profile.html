@@ -9,10 +9,6 @@
     <ion-list>
       <ion-list-header>General</ion-list-header>
       <ion-item>
-        <ion-label fixed>Name</ion-label>
-        <ion-input type="text" formControlName="name"></ion-input>
-      </ion-item>
-      <ion-item>
         <ion-label fixed>Age</ion-label>
         <ion-input type="number" formControlName="age"></ion-input>
       </ion-item>
@@ -60,9 +56,9 @@
       </ion-item>
     </ion-list>
 
-    <ion-item [hidden]="signupProfileForm.valid || signupProfileForm.pristine">
-      <p color="danger">General and Current Head Injury fields are not allowed to be empty</p>
-    </ion-item>
+    <p [hidden]="signupProfileForm.valid || signupProfileForm.pristine">
+      General and Current Head Injury fields are not allowed to be empty
+    </p>
     
     <button padding ion-button block [disabled]="!signupProfileForm.valid">Submit</button>
   </form>

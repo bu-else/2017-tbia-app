@@ -18,7 +18,7 @@ export class User {
   /**
    * @function {login}
    * @param  {Object} accountInfo: any {}
-   * @return {void} {send a POST request to the login endpoint with the data the user entered on the form}
+   * @return {} {send a POST request to the login endpoint with the data the user entered on the form}
    */
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo, {
@@ -40,7 +40,7 @@ export class User {
   /**
    * @function {signup}
    * @param  {Object} accountInfo: any {}
-   * @return {void} {send a POST request to the signup endpoint with the data the user entered on the form}
+   * @return {} {send a POST request to the signup endpoint with the data the user entered on the form}
    */
   signup(accountInfo: any) {
     let seq = this.api.post('signup', accountInfo, {
@@ -61,7 +61,7 @@ export class User {
 
   /**
    * @function {logout}
-   * @return {void} {Log the user out and forgets the session}
+   * @return {} {Log the user out and forgets the session}
    */
   logout() {
     let seq = this.api.delete('logout', {
@@ -79,5 +79,37 @@ export class User {
     this._authHeader = null;
 
     return seq;
+  }
+
+  /**
+   * @function {updatePatientInfo}
+   * @param {Object} PatientInfo: any {the signup profile form}
+   * @return {} {update patient information}
+   */
+  updatePatientInfo(patientInfo: any) {
+    let profile = {
+      "userID": this._user._id,
+      "patient_info": patientInfo
+    }
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let params = new URLSearchParams();
+    params.append('userID', this._user._id);
+    params.append('patient_info', JSON.stringify(profile));
+
+    let seq = this.api.post('update_patient_info', params.toString(), { headers: headers }).share();
+    return seq;
+  }
+
+  /**
+   * @function {getPatientInfo}
+   * @return {type} {get patient information}
+   */
+  getPatientInfo() {
+    let params = { "userID": this._user._id }
+    let seq = this.api.post('patient_info', params, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    }).share();
+
+    return seq
   }
 }

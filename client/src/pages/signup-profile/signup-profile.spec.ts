@@ -2,7 +2,7 @@ import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { IonicModule, NavController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { SignupProfilePage } from './signup-profile';
-import { Api, User } from '../../providers/providers';
+import { Api, User, EnvironmentProvider } from '../../providers/providers';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('Page: Sign Up (Profile)', () => {
@@ -16,6 +16,7 @@ describe('Page: Sign Up (Profile)', () => {
         NavController,
         Api,
         User,
+        EnvironmentProvider,
         HttpClient,
         HttpHandler
       ],
@@ -45,8 +46,7 @@ describe('Page: Sign Up (Profile)', () => {
       expect(component.signupProfileForm).toBeTruthy();
     })
     
-    it('should contain name, age and gender fields', () => {
-      expect(component.signupProfileForm.value.name).toBeDefined();
+    it('should contain age and gender fields', () => {
       expect(component.signupProfileForm.value.age).toBeDefined();
       expect(component.signupProfileForm.value.gender).toBeDefined();
     })
