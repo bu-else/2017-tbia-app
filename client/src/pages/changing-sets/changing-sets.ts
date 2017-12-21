@@ -23,9 +23,13 @@ export class ChangingSetsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public appCtrl: App, public viewCtrl: ViewController, public responses: ResponsesProvider) {
     this.api.get('assessments').subscribe((res: any) => {
-      this.template = res["assessments"][0]["template"];
-      this.new_template = res["assessments"][0]["new_template"];
-      this.assessment = this.generateQuestions(this.template, this.new_template, 5);
+      res.assessments.forEach(assessment => {
+        if (assessment.title == "Changing Sets") {
+          this.template = assessment.template;
+          this.new_template = assessment.new_template;
+          this.assessment = this.generateQuestions(this.template, this.new_template, 5);
+        }
+      });
     }, (err) => {
       console.log('ERROR', err);
     });

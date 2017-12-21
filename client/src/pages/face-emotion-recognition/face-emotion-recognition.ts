@@ -23,8 +23,12 @@ export class FaceEmotionRecognitionPage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public viewCtrl: ViewController, public api: Api, public responses: ResponsesProvider) {
     this.api.get('assessments').subscribe((res: any) => {
-      this.template = res["assessments"][1]["template"];
-      this.assessment = this.generateQuestions(this.template, 3)
+      res.assessments.forEach(assessment => {
+        if (assessment.title == "Face Emotion Recognition") {
+          this.template = assessment.template;
+          this.assessment = this.generateQuestions(this.template, 3);
+        }
+      });
     }, (err) => {
       console.log('ERROR', err);
     });
