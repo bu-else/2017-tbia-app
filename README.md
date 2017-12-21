@@ -54,7 +54,7 @@ Here's a demo of basic flow: `Welcome page` > `Login or Signup` > `Submit patien
 
 ![1-welcome](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/1-welcome.png)
 
-![2-signup](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/1-signup.png)
+![2-signup](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/2-signup.png)
 
 ![3-patient-info](https://github.com/bu-else/2017-tbia-app/blob/Develop/demo/3-patient-info.png)
 
